@@ -1,0 +1,18 @@
+<zk xmlns:n="native">
+	<div id="divSbrArchNomina" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMSAN') @init('co.com.sipre.vm.parametrizacion.VMSubirArchivoNomina')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.archsNomina}</n:h4>
+			<button iconSclass="z-icon-upload" id="btnSubirArchivo"
+				onClick="@command('subirArchivo')" class="" />
+			<button label="${labels.almacenarCatEmpl }"
+				iconSclass="z-icon-floppy-o" class=""
+				onClick="@command('almacenarCatalogoEmpleado', divParent = self.parent, btnUp = btnSubirArchivo, btnSave = self)" />
+		</div>
+		<div zclass="page-content" class="row">
+			<include
+				src="/zul/parametrizacion/components/catalogoempleadoLst.zul" />
+		</div>
+	</div>
+</zk>

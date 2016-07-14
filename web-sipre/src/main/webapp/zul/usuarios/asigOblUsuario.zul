@@ -1,0 +1,93 @@
+<zk xmlns:n="native">
+	<div id="divAdmProyeccion" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMAdmAcs') @init('co.com.sipre.vm.usuarios.VMAdmObligacionesUaurio')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.asignarPryUsr}</n:h4>
+			<button label="${labels.agregarObl }"
+				tooltiptext="${labels.agregarObl }" class="btn btn-primary"
+				iconSclass="z-icon-list-alt"
+				onClick="@command('winAgregarObligaciones')" />
+			<button label="${labels.removerObl }"
+				tooltiptext="${labels.removerObl }"
+				onClick="@command('removerObligaciones')" class="btn btn-danger"
+				iconSclass="z-icon-minus-square" />
+
+			<button tooltiptext="${labels.desbloquear }"
+				onClick="@command('desbloquearObligaciones', desbloquear = true)"
+				class="btn btn-warning" iconSclass="z-icon-unlock" />
+			<button tooltiptext="${labels.bloquear }"
+				onClick="@command('desbloquearObligaciones', desbloquear = false)"
+				class="btn btn-warning" iconSclass="z-icon-lock" />
+		</div>
+		<div class="row" zclass="page-content">
+			<n:div class="col-md-6">
+				<listbox model="@bind(vMAdmAcs.usuarios)" mold="paging"
+					rows="15" autopaging="true"
+					onSelect="@command('detalleUsuario', usuario = self.selectedItem.value)">
+					<listhead sizable="true">
+						<listheader label="${labels.usuario }"
+							hflex="min">
+						</listheader>
+						<listheader label="${labels.nombre }"></listheader>
+						<listheader label="${labels.email }"></listheader>
+					</listhead>
+					<template name="model" var="fila">
+						<listitem value="@bind(fila)">
+							<listcell label="@load(fila.username)" />
+							<listcell label="@load(fila.nombre)" />
+							<listcell label="@load(fila.email)" />
+						</listitem>
+					</template>
+				</listbox>
+			</n:div>
+			<n:div class="col-md-6">
+				<listbox model="@bind(vMAdmAcs.obligacionesUsr)"
+					multiple="true" checkmark="true" mold="paging" rows="15"
+					autopaging="true">
+					<listhead sizable="true">
+						<listheader sort="auto(cuenta)"
+							iconSclass="z-icon-filter">
+							<textbox instant="true"
+								placeholder="${labels.cuenta }" width="70%"
+								value="@bind(vMAdmAcs.oblUsuFiltro.cuenta)"
+								onChange="@command('filtrarObligacionesUsuario')">
+							</textbox>
+						</listheader>
+						<listheader sort="auto(centroCosto)"
+							iconSclass="z-icon-filter">
+							<intbox instant="true" width="70%"
+								placeholder="${labels.centroCosto }"
+								value="@bind(vMAdmAcs.oblUsuFiltro.centroCosto)"
+								onChange="@command('filtrarObligacionesUsuario')">
+							</intbox>
+						</listheader>
+						<listheader sort="auto(subCentro)"
+							iconSclass="z-icon-filter">
+							<intbox instant="true" width="70%"
+								placeholder="${labels.subCentro }"
+								value="@bind(vMAdmAcs.oblUsuFiltro.subCentro)"
+								onChange="@command('filtrarObligacionesUsuario')">
+							</intbox>
+						</listheader>
+						<listheader iconSclass="z-icon-unlock"
+							tooltiptext="${labels.desbloqueada }" hflex="min">
+						</listheader>
+					</listhead>
+					<template name="model" var="fila">
+						<listitem value="@bind(fila)">
+							<listcell label="@load(fila.cuenta)" />
+							<listcell label="@load(fila.centroCosto)" />
+							<listcell label="@load(fila.subCentro)" />
+							<listcell>
+								<checkbox
+									checked="@bind(fila.desbloqueada)" />
+							</listcell>
+						</listitem>
+					</template>
+				</listbox>
+			</n:div>
+		</div>
+
+	</div>
+</zk>

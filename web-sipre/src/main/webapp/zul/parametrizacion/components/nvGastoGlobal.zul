@@ -1,0 +1,37 @@
+<zk xmlns:n="native">
+	<window id="winGastoGlobal" mode="highlighted" width="400px"
+		title="${labels.dtllGastoGlobal }"
+		form="@id('frmNvGastGl') @load(vMgastgl.nvGastoGlobal) @save(vMgastgl.nvGastoGlobal, before='almacenarGasto')">
+		<hlayout valign="middle">
+			<n:h6>${labels.descripcion }</n:h6>
+			<label sclass="fg-red" />
+		</hlayout>
+		<textbox id="descripcion" value="@bind(frmNvGastGl.descripcion)"
+			maxlength="150" constraint="no empty" type="text"
+			placeholder="${labels.descripcion }" sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.valorGasto }</n:h6>
+			<label sclass="fg-red" />
+		</hlayout>
+		<intbox id="valor" value="@bind(frmNvGastGl.valor)"
+			maxlength="20" constraint="no empty"
+			placeholder="${labels.valorGasto}" sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.distrGasto}</n:h6>
+			<label sclass="fg-red"/>
+		</hlayout>
+		<combobox id="distribuidor" autodrop="true"
+			model="@load(vMgastgl.distribuidores)" value="@bind(frmNvGastGl.distribuidorS)" />
+
+		<div align="right">
+			<button iconSclass="z-icon-check"
+				class="btn btn-lg btn-success" tooltiptext="${labels.finalizar }"
+				onClick="@command('almacenarGasto')" />
+			<button iconSclass="z-icon-times"
+				class="btn btn-lg btn-danger" tooltiptext="${labels.cancelar }"
+				onClick="winGastoGlobal.onClose()" />
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,40 @@
+<zk xmlns:n="native">
+	<window id="widEditarPropiedad" mode="highlighted" width="300px">
+		<grid>
+			<columns>
+				<column width="100px" />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<n:label>${labels.valorActual }</n:label>
+					<label
+						value="@load(vMProp.propiedad.valorDecimal) @converter('formatedNumber', format='##,## %')"
+						if="${vMProp.sWPorcentaje == 2}" />
+					<label
+						value="@load(vMProp.propiedad.valorDecimal) @converter('formatedNumber', format='#,##0.## $')"
+						if="${vMProp.sWPorcentaje == 1}" />
+					<label value="@load(vMProp.propiedad.valorText) "
+						if="${vMProp.sWPorcentaje == 3}" />
+				</row>
+				<row>
+					<n:label>${labels.valorNuevo }</n:label>
+					<decimalbox id="dcbValorNv"
+						format="@load(vMProp.format)" maxlength="19" />
+				</row>
+			</rows>
+
+		</grid>
+
+		<separator height="20px" bar="true" visible="true" />
+
+		<div align="right">
+			<button label="${labels.guardar }"
+				class="btn btn-lg btn-success" iconSclass="z-icon-check"
+				onClick="@command('almacenarPropiedad', valorNv = dcbValorNv.value)" />
+			<button label="${labels.cancelar }"
+				class="btn btn-lg btn-danger" iconSclass="z-icon-times"
+				onClick="widEditarPropiedad.onClose()" />
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,51 @@
+<zk xmlns:n="native">
+	<window id="wndNuevoFondo" closable="true"
+		title="${labels.nvFondo }"
+		form="@id('frmNvFnd') @load(vMFds.nvFondo) @save(vMFds.nvFondo, before='almacenarFondo') @validator('co.com.sipre.validators.ValidatorsNuevoFondoPension')">
+		<hlayout valign="middle">
+			<n:h6>${labels.codigoPension }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['codigo'])" />
+		</hlayout>
+		<intbox id="codigo" value="@bind(frmNvFnd.codigo)"
+			maxlength="10" constraint="no empty"
+			placeholder="${labels.codigoPension  }" sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.pension }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['fondoPension'])" />
+		</hlayout>
+		<textbox id="fondoPension" value="@bind(frmNvFnd.fondoPension)"
+			maxlength="150" constraint="no empty" type="text"
+			placeholder="${labels.pension  }" sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.cuenta51 }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['cuenta51'])" />
+		</hlayout>
+		<combobox id="cuenta51" autodrop="true"
+			model="@load(vMFds.cuentas)" value="@bind(frmNvFnd.cuenta51)" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.cuenta52 }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['cuenta52'])" />
+		</hlayout>
+		<combobox id="cuenta52" autodrop="true"
+			model="@load(vMFds.cuentas)" value="@bind(frmNvFnd.cuenta52)" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.cuenta72 }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['cuenta72'])" />
+		</hlayout>
+		<combobox id="cuenta72" autodrop="true"
+			model="@load(vMFds.cuentas)" value="@bind(frmNvFnd.cuenta72)" />
+
+		<div align="right">
+			<button iconSclass="z-icon-check"
+				class="btn btn-lg btn-success" tooltiptext="${labels.finalizar }"
+				onClick="@command('almacenarFondo')" />
+			<button iconSclass="z-icon-times"
+				class="btn btn-lg btn-danger" tooltiptext="${labels.cancelar }"
+				onClick="wndNuevoFondo.onClose()" />
+		</div>
+	</window>
+</zk>

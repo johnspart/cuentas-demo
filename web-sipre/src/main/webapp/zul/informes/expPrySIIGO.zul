@@ -1,0 +1,13 @@
+<zk xmlns:n="native">
+	<div id="divResCuentas" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMPry') @init('co.com.sipre.vm.informes.VMExportarProyeccionSIIGO')"
+		validationMessages="@id('vmsgs')">
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.exportProyeccionSIIGO }</n:h4>
+		</div>
+		<div class="row" zclass="page-content">
+			<include
+				src="/zul/proyecciones/components/proyeccionLst.zul" />
+		</div>
+	</div>
+</zk>

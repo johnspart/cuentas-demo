@@ -1,0 +1,32 @@
+<zk xmlns:n="native">
+	<div id="divAdmProyeccion" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMAdmAcs') @init('co.com.sipre.vm.usuarios.VMAdministrarAcceso')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.adminAcceso}</n:h4>
+			<button label="${labels.agrUsuario }"
+				onClick="@command('detalleUsuario')" />
+		</div>
+
+		<div class="row" zclass="page-content">
+			<listbox model="@bind(vMAdmAcs.usuariosRol)" mold="paging"
+				rows="15" autopaging="true"
+				onSelect="@command('detalleUsuario', usuarioRol = self.selectedItem.value)">
+				<listhead>
+					<listheader label="${labels.usuario }"></listheader>
+					<listheader label="${labels.rol }"></listheader>
+					<listheader label="${labels.nombre }"></listheader>
+					<listheader label="${labels.email }"></listheader>
+				</listhead>
+				<template name="model" var="fila">
+					<listitem value="@bind(fila)">
+						<listcell label="@load(fila.username)" />
+						<listcell label="@load(fila.rol.rol)" />
+						<listcell label="@load(fila.nombre)" />
+						<listcell label="@load(fila.email)" />
+					</listitem>
+				</template>
+			</listbox>
+		</div>
+	</div>
+</zk>

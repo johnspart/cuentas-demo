@@ -1,0 +1,61 @@
+<zk xmlns:n="native">
+	<div id="divRoles" apply="org.zkoss.bind.BindComposer"
+		validationMessages="@id('vmsgs')"
+		viewModel="@id('vMAdmRol') @init('co.com.sipre.vm.usuarios.VMAdmRoles')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.roles}</n:h4>
+			<button label="${labels.nvRol }"
+				tooltiptext="${labels.nvRol }" class="btn btn-primary"
+				iconSclass="z-icon-list-alt" onClick="@command('wndNuevoRol')" />
+			<button label="${labels.eliminarRol }"
+				tooltiptext="${labels.eliminarRol }"
+				onClick="@command('removerRol')" class="btn btn-danger"
+				iconSclass="z-icon-minus-square" />
+
+			<button tooltiptext="${labels.desbloquear }"
+				onClick="@command('desbloquearPermisos', desbloquear = true)"
+				class="btn btn-warning" iconSclass="z-icon-unlock" />
+			<button tooltiptext="${labels.bloquear }"
+				onClick="@command('desbloquearPermisos', desbloquear = false)"
+				class="btn btn-warning" iconSclass="z-icon-lock" />
+		</div>
+		<div class="row" zclass="page-content">
+			<n:div class="col-md-6">
+				<listbox model="@bind(vMAdmRol.roles)" mold="paging"
+					rows="15" autopaging="true"
+					onSelect="@command('detalleRol', rol = self.selectedItem.value)">
+					<listhead sizable="true">
+						<listheader label="${labels.rol }" />
+					</listhead>
+					<template name="model" var="fila">
+						<listitem value="@bind(fila)">
+							<listcell label="@load(fila.rol)"
+								tooltiptext="@load(fila.descripcion)" />
+						</listitem>
+					</template>
+				</listbox>
+			</n:div>
+			<n:div class="col-md-6">
+				<listbox model="@bind(vMAdmRol.permisos)"
+					multiple="true" checkmark="true">
+					<listhead sizable="true">
+						<listheader label="${labels.permisos }"
+							sort="auto(permiso)" />
+						<listheader iconSclass="z-icon-unlock"
+							tooltiptext="${labels.desbloqueada }" hflex="min">
+						</listheader>
+					</listhead>
+					<template name="model" var="fila">
+						<listitem value="@bind(fila)">
+							<listcell label="@load(fila.permiso)" />
+							<listcell>
+								<checkbox checked="@bind(fila.check)" />
+							</listcell>
+						</listitem>
+					</template>
+				</listbox>
+			</n:div>
+		</div>
+	</div>
+</zk>

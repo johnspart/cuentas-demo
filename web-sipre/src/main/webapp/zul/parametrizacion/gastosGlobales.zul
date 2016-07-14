@@ -1,0 +1,64 @@
+<zk xmlns:n="native">
+	<div id="divGastosGlobales" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMgastgl') @init('co.com.sipre.vm.parametrizacion.VMGastosGlobales')"
+		validationMessages="@id('vmsgs')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.dbgGlobal}</n:h4>
+			<button label="${labels.nvGastoGlobal }"
+				onClick="@command('nuevoGastoGlobalWin')" iconSclass="z-icon-plus"
+				class="btn btn-info" />
+			<button label="${labels.editar }"
+				onClick="@command('nuevoGastoGlobalWin', gastoGlobal = ltbGastGl.selectedItem.value)"
+				iconSclass="z-icon-pencil-square-o" class="btn btn-info" />
+			<button label="${labels.eliminar }"
+				tooltiptext="${labels.eliminar }"
+				onClick="@command('eliminarGastoGlobal', gastGl = ltbGastGl.selectedItem.value)"
+				class="btn btn-warning" iconSclass="z-icon-trash-o" />
+
+			<button label="${labels.agrDependencia }"
+				onClick="@command('wndAgrDependencia', distribucionGasto = ltbGastGl.selectedItem.value)"
+				iconSclass="z-icon-plus" class="btn btn-info" />
+			<button label="${labels.rmvDependencia }"
+				tooltiptext="${labels.rmvDependencia }"
+				onClick="@command('rmvDependencia', gastoDetalle = lstDependenciasGasto.selectedItem.value)"
+				class="btn btn-danger" iconSclass="z-icon-minus" />
+		</div>
+		<div zclass="page-content" class="row">
+			<n:div class="col-md-8">
+				<listbox model="@bind(vMgastgl.gastosGlobales)"
+					onSelect="@command('detalleGastoGlobal', distribucionGasto = self.selectedItem.value)"
+					rows="10" mold="paging" autopaging="true" id="ltbGastGl">
+					<listhead sizable="true">
+						<listheader label="${labels.descripcion}" />
+						<listheader label="${labels.valorGasto }" />
+						<listheader label="${labels.distrGasto }" />
+					</listhead>
+					<template name="model" var="fila">
+						<listitem value="@bind(fila)">
+							<listcell label="@load(fila.descripcion)" />
+							<listcell
+								label="@load(fila.valor) @converter('formatedNumber', format='#,##0.##')" />
+							<listcell label="@load(fila.distribuidorS)" />
+						</listitem>
+					</template>
+				</listbox>
+			</n:div>
+			<n:div class="col-md-4">
+				<listbox id="lstDependenciasGasto"
+					model="@bind(vMgastgl.distribucionGastoDetalles)">
+					<listhead>
+						<listheader label="${labels.dependencia}" />
+						<listheader label="${labels.cuenta }" />
+					</listhead>
+					<template name="model" var="fila">
+						<listitem value="@bind(fila)">
+							<listcell label="@load(fila.dependencia)" />
+							<listcell label="@load(fila.cuenta)" />
+						</listitem>
+					</template>
+				</listbox>
+			</n:div>
+		</div>
+	</div>
+</zk>

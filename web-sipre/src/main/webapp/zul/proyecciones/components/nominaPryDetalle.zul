@@ -1,0 +1,152 @@
+<zk xmlns:n="native">
+	<window id="wndPryNominaDetalle" closable="true" width="1000px"
+		mode="highlighted"
+		form="@id('frmNme') @load(vMNmn.nominaEmpleado) @save(vMNmn.nominaEmpleado, before='almcenarNominaEmplDetalle') @validator('co.com.sipre.validators.ValidatorNominaEmpleadoDetalle')">
+
+		<include
+			src="/zul/proyecciones/components/headerNominaPryDetalle.zul" />
+
+		<separator height="30px" visible="true" />
+
+		<n:div class="row">
+			<div class="col-sm-4">
+				<hlayout valign="middle">
+					<n:h6>${labels.sueldo }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['sueldo'])" />
+				</hlayout>
+				<decimalbox id="sueldo" value="@bind(frmNme.sueldo)"
+					maxlength="20" constraint="no empty"
+					placeholder="${labels.sueldo }" format="#,##0.##"
+					sclass="input-control text" />
+			</div>
+			<div class="col-sm-4">
+				<hlayout valign="middle">
+					<n:h6>${labels.subsidioTransporte }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['subsidioTransporte'])" />
+				</hlayout>
+				<decimalbox id="subsidioTransporte"
+					value="@bind(frmNme.nominaEmpleadoDetalle.subsidioTransporte)"
+					maxlength="20" constraint="no empty"
+					placeholder="${labels.subsidioTransporte }" format="#,##0.##"
+					sclass="input-control text" />
+			</div>
+			<div class="col-sm-4">
+				<hlayout valign="middle">
+					<n:h6>${labels.dotacionMes }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['dotacionMes'])" />
+				</hlayout>
+				<decimalbox id="dotacionMes"
+					value="@bind(frmNme.nominaEmpleadoDetalle.dotacionMes)"
+					maxlength="20" constraint="no empty"
+					placeholder="${labels.dotacionMes }" format="#,##0.##"
+					sclass="input-control text" />
+			</div>
+		</n:div>
+
+		<n:div class="row">
+			<div class="col-sm-4">
+				<hlayout valign="middle">
+					<n:h6>${labels.mediosTransporte }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['mediosTransporte'])" />
+				</hlayout>
+				<decimalbox id="mediosTransporte"
+					value="@bind(frmNme.nominaEmpleadoDetalle.mediosTransporte)"
+					maxlength="20" constraint="no empty"
+					placeholder="${labels.mediosTransporte }" format="#,##0.##"
+					sclass="input-control text" />
+			</div>
+			<div class="col-sm-4">
+				<hlayout valign="middle">
+					<n:h6>${labels.auxDisponibilidad }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['auxDisponibilidad'])" />
+				</hlayout>
+				<decimalbox id="auxDisponibilidad"
+					value="@bind(frmNme.nominaEmpleadoDetalle.auxDisponibilidad)"
+					maxlength="20" constraint="no empty"
+					placeholder="${labels.auxDisponibilidad }" format="#,##0.##"
+					sclass="input-control text" />
+			</div>
+			<div class="col-sm-4">
+				<hlayout valign="middle">
+					<n:h6>${labels.promedioComisiones }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['promedioComisiones'])" />
+				</hlayout>
+				<decimalbox id="promedioComisiones"
+					value="@bind(frmNme.nominaEmpleadoDetalle.promedioComisiones)"
+					maxlength="20" constraint="no empty"
+					placeholder="${labels.promedioComisiones }" format="#,##0.##"
+					sclass="input-control text" />
+			</div>
+		</n:div>
+
+		<n:div class="row">
+			<div class="col-sm-4">
+				<hlayout valign="middle">
+					<n:h6>${labels.extraLegales }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['extraLegales'])" />
+				</hlayout>
+				<decimalbox id="extraLegales"
+					value="@bind(frmNme.nominaEmpleadoDetalle.extraLegales)"
+					maxlength="20" constraint="no empty"
+					placeholder="${labels.extraLegales }" format="#,##0.##"
+					sclass="input-control text" />
+			</div>
+			<div class="col-sm-4">
+				<hlayout valign="middle">
+					<n:h6>${labels.vacacionesExtraLegales }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['vacacionesExtraLegales'])" />
+				</hlayout>
+				<intbox id="vacacionesExtraLegales"
+					value="@bind(frmNme.nominaEmpleadoDetalle.vacacionesExtraLegales)"
+					maxlength="20" constraint="no empty"
+					placeholder="${labels.vacacionesExtraLegales }"
+					sclass="input-control text" />
+			</div>
+			<div class="col-sm-4">
+				<hlayout valign="middle">
+					<n:h6>${labels.promRecgHorExtMes }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['promRecgHorExtMes'])" />
+				</hlayout>
+				<decimalbox id="promRecgHorExtMes"
+					value="@bind(frmNme.nominaEmpleadoDetalle.promRecgHorExtMes)"
+					maxlength="20" constraint="no empty"
+					placeholder="${labels.promRecgHorExtMes }" format="#,##0.##"
+					sclass="input-control text" />
+			</div>
+		</n:div>
+
+		<!--n:div class="row">
+			<div class="col-sm-4">
+			<hlayout valign="middle">
+			<n:h6>${labels.saludOcupacional }</n:h6>
+			<label sclass="fg-red"
+			value="@bind(vmsgs['saludOcupacional'])" />
+			</hlayout>
+			<decimalbox id="saludOcupacional"
+			value="@bind(frmNme.nominaEmpleadoDetalle.saludOcupacional)"
+			maxlength="20" constraint="no empty"
+			placeholder="${labels.saludOcupacional }" format="#,##0.##"
+			sclass="input-control text" />
+			</div>
+			</n:div -->
+
+		<separator height="30px" visible="true" />
+		<div align="right">
+			<button iconSclass="z-icon-check"
+				class="btn btn-lg btn-success" label="${labels.finalizar }"
+				onClick="@command('almcenarNominaEmplDetalle') @global-command('filtrarNominaEmplDetalle')" />
+			<button iconSclass="z-icon-times"
+				class="btn btn-lg btn-danger" label="${labels.cancelar }"
+				onClick="wndPryNominaDetalle.onClose()" />
+		</div>
+	</window>
+</zk>

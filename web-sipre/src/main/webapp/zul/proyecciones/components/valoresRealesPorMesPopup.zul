@@ -1,0 +1,58 @@
+<zk>
+	<popup id="pppValoresReales" width="400px" >
+		<listbox>
+			<listhead>
+				<listheader label="${labels.mes }" hflex="min"/>
+				<listheader label="${labels.vlrMes }" />
+			</listhead>
+			<listitem>
+				<listcell label="${labels.ene }" />
+				<listcell label="@bind(vMObl.oblDetallePorMesReal.ene) @converter('formatedNumber', format='#,##0.##')" />
+			</listitem>
+			<listitem>
+				<listcell label="${labels.feb }" />
+				<listcell label="@bind(vMObl.oblDetallePorMesReal.feb) @converter('formatedNumber', format='#,##0.##')" />
+			</listitem>
+			<listitem>
+				<listcell label="${labels.mar }" />
+				<listcell label="@bind(vMObl.oblDetallePorMesReal.mar) @converter('formatedNumber', format='#,##0.##')" />
+			</listitem>
+			<listitem>
+				<listcell label="${labels.abr }" />
+				<listcell label="@bind(vMObl.oblDetallePorMesReal.abr) @converter('formatedNumber', format='#,##0.##')" />
+			</listitem>
+			<listitem>
+				<listcell label="${labels.may }" />
+				<listcell label="@bind(vMObl.oblDetallePorMesReal.may) @converter('formatedNumber', format='#,##0.##')" />
+			</listitem>
+			<listitem>
+				<listcell label="${labels.jun }" />
+				<listcell label="@bind(vMObl.oblDetallePorMesReal.jun) @converter('formatedNumber', format='#,##0.##')" />
+			</listitem>
+			<listitem>
+				<listcell label="${labels.jul }" />
+				<listcell label="@bind(vMObl.oblDetallePorMesReal.jul) @converter('formatedNumber', format='#,##0.##')" />
+			</listitem>
+			<listitem>
+				<listcell label="${labels.ago }" />
+				<listcell label="@bind(vMObl.oblDetallePorMesReal.ago) @converter('formatedNumber', format='#,##0.##')" />
+			</listitem>
+			<listitem>
+				<listcell label="${labels.sep }" />
+				<listcell label="@bind(vMObl.oblDetallePorMesReal.sep) @converter('formatedNumber', format='#,##0.##')" />
+			</listitem>
+			<listitem>
+				<listcell label="${labels.oct }" />
+				<listcell label="@bind(vMObl.oblDetallePorMesReal.oct) @converter('formatedNumber', format='#,##0.##')" />
+			</listitem>
+			<listitem>
+				<listcell label="${labels.nov }" />
+				<listcell label="@bind(vMObl.oblDetallePorMesReal.nov) @converter('formatedNumber', format='#,##0.##')" />
+			</listitem>
+			<listitem>
+				<listcell label="${labels.dic }" />
+				<listcell label="@bind(vMObl.oblDetallePorMesReal.dic) @converter('formatedNumber', format='#,##0.##')" />
+			</listitem>
+		</listbox>
+	</popup>
+</zk>

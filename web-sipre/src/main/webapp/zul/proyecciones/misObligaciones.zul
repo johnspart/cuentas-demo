@@ -1,0 +1,31 @@
+<zk xmlns:n="native">
+	<div id="divObligaciones" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMPry') @init('co.com.sipre.vm.proyecciones.VMMisObligaciones')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.misObligaciones}</n:h4>
+
+			<button label="${labels.misPoliticas }"
+				onClick="@command('misPoliticas')" iconSclass="z-icon-gavel " />
+
+			<button label="${labels.agrAdjunto }"
+				onClick="@command('agrAdjuntoWnd')" iconSclass="z-icon-cloud-upload" />
+			<button label="${labels.verAdjuntos }" popup="pppAdjuntos"
+				iconSclass="z-icon-paperclip " />
+			<popup id="pppAdjuntos" width="500px">
+				<listbox model="@bind(vMPry.adjuntos)"
+					onSelect="@command('verAdjunto', name = self.selectedItem.value)">
+					<template name="model" var="fila">
+						<listitem value="@bind(fila)"
+							label="@load(fila)" />
+					</template>
+				</listbox>
+			</popup>
+		</div>
+
+		<div zclass="page-content" class="row">
+			<include
+				src="/zul/proyecciones/components/obligacionLst.zul" />
+		</div>
+	</div>
+</zk>

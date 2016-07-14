@@ -1,0 +1,95 @@
+<zk xmlns:n="native">
+	<div id="divAdmActivosFijos" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMAct') @init('co.com.sipre.vm.parametrizacion.VMActivosFijos')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.activosFijos}</n:h4>
+			<button label="${labels.crgActivosSIIGO }"
+				tooltiptext="${labels.crgActFjsValdsAnioSig}"
+				class="btn btn-primary" iconSclass="z-icon-list-alt"
+				onClick="@command('cargarActivosFijosSIIGO')" />
+
+			<button label="${labels.hologarCuentas }"
+				tooltiptext="${labels.hmlCuentasActFijos}" class="btn btn-primary"
+				iconSclass="z-icon-list-alt"
+				onClick="@command('homologarCuentasActivos')" />
+
+		</div>
+		<div class="row" zclass="page-content">
+			<listbox model="@bind(vMAct.activos)" mold="paging"
+				rows="20" autopaging="true">
+				<listhead sizable="true">
+					<listheader hflex="min" iconSclass="z-icon-filter"
+						sort="auto(idActivo)">
+						<intbox placeholder="${labels.codigo }"
+							value="@bind(vMAct.filtro.idActivo)" instant="true"
+							onChange="@command('filtrarActivos')" />
+					</listheader>
+					<listheader iconSclass="z-icon-filter"
+						sort="auto(descripcion)">
+						<textbox placeholder="${labels.descripcion }"
+							value="@bind(vMAct.filtro.descripcion)" instant="true"
+							onChange="@command('filtrarActivos')" />
+					</listheader>
+					<listheader hflex="min" iconSclass="z-icon-filter"
+						sort="auto(codigoActivo)">
+						<textbox placeholder="${labels.codigoActivo }"
+							value="@bind(vMAct.filtro.codigoActivo)" instant="true"
+							onChange="@command('filtrarActivos')" />
+					</listheader>
+					<listheader hflex="min"
+						label="${labels.fechaCompra }" sort="auto(fechaCompra)" />
+					<listheader hflex="min"
+						label="${labels.fechaFinDepreciacion }"
+						sort="auto(fechaFinDepreciacion)" />
+					<listheader hflex="min" iconSclass="z-icon-filter"
+						sort="auto(numeroDepreciaciones)"
+						tooltiptext="${labels.numeroDepreciaciones }">
+						<intbox
+							placeholder="${labels.numeroDepreciaciones }"
+							value="@bind(vMAct.filtro.numeroDepreciaciones)" instant="true"
+							onChange="@command('filtrarActivos')" />
+					</listheader>
+					<listheader hflex="min" iconSclass="z-icon-filter"
+						sort="auto(cuenta)">
+						<textbox placeholder="${labels.cuenta }"
+							value="@bind(vMAct.filtro.cuenta)" instant="true"
+							onChange="@command('filtrarActivos')" />
+					</listheader>
+					<listheader hflex="min" iconSclass="z-icon-filter"
+						sort="auto(centroCosto)">
+						<textbox placeholder="${labels.centroCosto }"
+							value="@bind(vMAct.filtro.centroCosto)" instant="true"
+							onChange="@command('filtrarActivos')" />
+					</listheader>
+					<listheader hflex="min" iconSclass="z-icon-filter"
+						sort="auto(subCentroCosto)">
+						<textbox placeholder="${labels.subCentro }"
+							value="@bind(vMAct.filtro.subCentroCosto)" instant="true"
+							onChange="@command('filtrarActivos')" />
+					</listheader>
+					<listheader hflex="min" label="${labels.valor }"
+						sort="auto(valor)" />
+				</listhead>
+				<template name="model" var="fila">
+					<listitem value="@bind(fila)">
+						<listcell label="@load(fila.idActivo)" />
+						<listcell label="@load(fila.descripcion)" />
+						<listcell label="@load(fila.codigoActivo)" />
+						<listcell
+							label="@load(fila.fechaCompra) @converter('formatedDate',format='yyyy/MM/dd')" />
+						<listcell
+							label="@load(fila.fechaFinDepreciacion) @converter('formatedDate',format='yyyy/MM/dd')" />
+						<listcell
+							label="@load(fila.numeroDepreciaciones)" />
+						<listcell label="@load(fila.cuenta)" />
+						<listcell label="@load(fila.centroCosto)" />
+						<listcell label="@load(fila.subCentroCosto)" />
+						<listcell
+							label="@load(fila.valor)  @converter('formatedNumber', format='#,##0.##')" />
+					</listitem>
+				</template>
+			</listbox>
+		</div>
+	</div>
+</zk>

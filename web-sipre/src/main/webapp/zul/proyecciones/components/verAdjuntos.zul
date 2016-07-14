@@ -1,0 +1,40 @@
+<zk xmlns:n="native">
+	<window title="${labels.verAdjuntos }" closable="true">
+		<listbox id="lbtAdjs" model="@bind(vMPry.adjuntos)"
+			onSelect="txbDs.setValue(((co.com.sipre.beans.proyecciones.Adjunto)self.getSelectedItem().getValue()).getDescripcion())"
+			mold="paging" rows="7" pageSize="7" checkmark="true"
+			multiple="false">
+			<listhead sizable="true">
+				<listheader sort="auto(usuario)"
+					label="${labels.usuario }" />
+				<listheader sort="auto(cuetna)"
+					label="${labels.cuenta }" />
+				<listheader sort="auto(dsCuenta)"
+					label="${labels.dsCuenta }" />
+				<listheader sort="auto(centroCosto)"
+					label="${labels.centroCosto }" />
+				<listheader sort="auto(nombre)"
+					label="${labels.adjunto }" />
+			</listhead>
+			<template name="model" var="fila">
+				<listitem value="@bind(fila)">
+					<listcell label="@bind(fila.usuario)" />
+					<listcell label="@bind(fila.cuenta)" />
+					<listcell label="@bind(fila.dsCuenta)" />
+					<listcell label="@bind(fila.centroCosto)" />
+					<listcell label="@bind(fila.nombre)" />
+				</listitem>
+			</template>
+		</listbox>
+
+		<n:h6>${labels.descripcion }</n:h6>
+		<textbox id="txbDs" rows="3" focus="true" readonly="true"
+			width="60%" placeholder="${labels.descripcion }" />
+
+		<div align="right">
+			<button label="${labels.descargar }"
+				onClick="@command('descargarAdjunto', adj = lbtAdjs.selectedItem.value)"
+				iconSclass="z-icon-cloud-download" class="btn btn-success" />
+		</div>
+	</window>
+</zk>

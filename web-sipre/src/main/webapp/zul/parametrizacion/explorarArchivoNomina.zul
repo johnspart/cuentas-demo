@@ -1,0 +1,16 @@
+<zk xmlns:n="native">
+	<div id="divSbrArchNomina" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMSAN') @init('co.com.sipre.vm.parametrizacion.VMExplorarArchivoNomina')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.archsNomina}</n:h4>
+			<button label="${labels.eliminar }"
+				class="btn btn-lg btn-warning" iconSclass="z-icon-trash-o"
+				onClick="@command('eliminar')" />
+		</div>
+		<div zclass="page-content" class="row">
+			<include
+				src="/zul/parametrizacion/components/catalogoempleadoLst.zul" />
+		</div>
+	</div>
+</zk>

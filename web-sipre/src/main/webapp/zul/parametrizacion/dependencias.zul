@@ -1,0 +1,36 @@
+<zk xmlns:n="native">
+	<div id="divDependencias" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMdepend') @init('co.com.sipre.vm.parametrizacion.VMDependencias')"
+		validationMessages="@id('vmsgs')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.dependencias}</n:h4>
+			
+			<button label="${labels.expDependencias }"
+				onClick="@command('expDependencias')" iconSclass="z-icon-download"
+				class="btn btn-info" />
+			
+			<button label="${labels.nvDependencia }"
+				onClick="@command('nuevaDependenciaWin')" iconSclass="z-icon-plus"
+				class="btn btn-info" />
+		</div>
+		<div zclass="page-content" class="row">
+			<listbox model="@bind(vMdepend.dependencias)" rows="10"
+				mold="paging" autopaging="true" id="lstDepend"
+				onSelect="@command('editarDependencia', dependencia = self.selectedItem.value)">
+				<listhead sizable="true">
+					<listheader label="${labels.centroCosto}" />
+					<listheader label="${labels.subCentro }" />
+					<listheader label="${labels.descripcion }" />
+				</listhead>
+				<template name="model" var="fila">
+					<listitem value="@bind(fila)">
+						<listcell label="@load(fila.centroCosto)" />
+						<listcell label="@load(fila.subCentro)" />
+						<listcell label="@load(fila.descripcion)" />
+					</listitem>
+				</template>
+			</listbox>
+		</div>
+	</div>
+</zk>

@@ -1,0 +1,29 @@
+<zk xmlns:n="native">
+	<div id="divDistrGastos" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMDistrGast') @init('co.com.sipre.vm.proyecciones.VMDistribucionGastosProyeccion')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.nvDistrGastos}</n:h4>
+			<button label="${labels.nvDistrGastos }"
+				iconSclass="z-icon-download"
+				onClick="@command('winSeleccAnnioDistr')" class="btn btn-info" />
+		</div>
+		<div class="row" zclass="page-content">
+			<listbox model="@bind(vMDistrGast.distrGastosProyecciones)"
+				rows="10" emptyMessage="${labels.noExisDistribuciones}"
+				onSelect="@command('detalleDistribucionGastos', dtllDistribucionGasto = self.selectedItem.value)"
+				mold="paging" autopaging="true">
+				<listhead sizable="true">
+					<listheader label="${labels.distrAnnio }" />
+					<listheader label="${labels.proyeccAnnio }" />
+				</listhead>
+				<template name="model" var="fila">
+					<listitem value="@bind(fila)">
+						<listcell label="@load(fila.annioDistribucion)" />
+						<listcell label="@load(fila.annioProyeccion)" />
+					</listitem>
+				</template>
+			</listbox>
+		</div>
+	</div>
+</zk>

@@ -1,0 +1,40 @@
+<zk xmlns:n="native">
+	<div id="divSbrArchNomina" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMSAN') @init('co.com.sipre.vm.parametrizacion.VMArchivosNomina')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.archsNomina}</n:h4>
+			<button label="${labels.nuevoArchNomina }"
+				onClick="@command('nuevoArchivonomina')" iconSclass="z-icon-plus"
+				class="btn btn-info" />
+		</div>
+		<div zclass="page-content" class="row">
+			<listbox model="@bind(vMSAN.catalogosEmpleado)" 
+				mold="paging" autopaging="true" rows="10"
+				emptyMessage="${labels.noExistenArchNomina }"
+				onSelect="@command('loadCatalogoEmpleadoDetalle', catEmp = self.selectedItem.value)">
+				<listhead sizable="true">
+					<listheader label="${labels.consecutivo }"
+						sort="auto(idCatalogoEmpleado)" />
+					<listheader label="${labels.fechaCatalogo }"
+						sort="auto(fechaCatalogo)" />
+					<listheader label="${labels.fechaCarga }"
+						sort="auto(fechaSubida)" />
+					<listheader label="${labels.usrCarga }"
+						sort="auto(usuarioCrea)" />
+				</listhead>
+				<template name="model" var="fila">
+					<listitem value="@bind(fila)">
+						<listcell
+							label="@load(fila.idCatalogoEmpleado)" />
+						<listcell
+							label="@load(fila.fechaCatalogo) @converter('formatedDate',format='yyyy/MM/dd')" />
+						<listcell
+							label="@load(fila.fechaSubida) @converter('formatedDate',format='yyyy/MM/dd')" />
+						<listcell label="@load(fila.usuarioCrea)" />
+					</listitem>
+				</template>
+			</listbox>
+		</div>
+	</div>
+</zk>

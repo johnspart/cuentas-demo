@@ -1,0 +1,31 @@
+<zk xmlns:n="native">
+	<window id="wndNvGRupoActivo" closable="true" mode="highlighted"
+		title="${labels.nvGrActivo }"
+		form="@id('frmNvGrAc') @load(vMGrActivo.nvGrActivo) @save(vMGrActivo.nvGrActivo, before='almacenarGrupoActivo') @validator('co.com.sipre.validators.ValidatorGrupoActivo')">
+
+		<hlayout valign="middle">
+			<n:h6>${labels.codigo }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['codigo'])" />
+		</hlayout>
+		<textbox id="codigo" value="@bind(frmNvGrAc.codigo)"
+			maxlength="10" sclass="input-control text" constraint="no empty" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.descripcion }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['descripcion'])" />
+		</hlayout>
+		<textbox id="descripcion" value="@bind(frmNvGrAc.descripcion)"
+			maxlength="250" sclass="input-control text" constraint="no empty" />
+
+		<separator visible="true" height="20px" bar="true" />
+
+		<div align="right">
+			<button label="${labels.gruardar }"
+				onClick="@command('almacenarGrupoActivo')" iconSclass="z-icon-plus"
+				class="btn btn-lg btn-success" />
+			<button label="${labels.cerrar }"
+				iconSclass="z-icon-sign-out" class="btn btn-lg btn-danger"
+				onClick="wndNvGRupoActivo.onClose()" />
+		</div>
+	</window>
+</zk>

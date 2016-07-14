@@ -1,0 +1,35 @@
+<zk xmlns:n="native">
+	<window id="wndMisPoliticas" title="${labels.misPoliticas }"
+		closable="true" position="center,top" width="1000px" height="700px"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMMP') @init('co.com.sipre.vm.proyecciones.components.VMMisPoliticas')">
+		<listbox model="@bind(vMMP.cumplimientoPoliticas)"
+			emptyMessage="${labels.noExisPoliticas}" mold="paging"
+			autopaging="true" pageSize="15" rows="15">
+			<listhead>
+				<listheader label="${labels.cuenta }" />
+				<listheader label="${labels.centroCosto }" />
+				<listheader label="${labels.subCentro }" />
+				<listheader label="${labels.valor }" />
+				<listheader label="${labels.faltante }" />
+				<listheader label="${labels.politica } %" />
+				<listheader label="${labels.cumplimiento } %" />
+			</listhead>
+			<template name="model" var="fila">
+				<listitem value="@bind(fila)">
+					<listcell label="@load(fila.cuenta)" />
+					<listcell label="@load(fila.centroCosto)" />
+					<listcell label="@load(fila.subCentro)" />
+					<listcell
+						label="@load(fila.valor) @converter('formatedNumber', format='#,##0.##')" />
+					<listcell
+						label="@load(fila.faltante) @converter('formatedNumber', format='#,##0.##')" />
+					<listcell
+						label="@load(fila.porcentaje) @converter('formatedNumber', format='##,##%')" />
+					<listcell
+						label="@load(fila.cumplemiento) @converter('formatedNumber', format='##,##%')" />
+				</listitem>
+			</template>
+		</listbox>
+	</window>
+</zk>

@@ -1,0 +1,38 @@
+<zk xmlns:n="native">
+	<div id="divAdmPoliticas" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMPry') @init('co.com.sipre.vm.proyecciones.VMAdministrarPry')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.politicas}</n:h4>
+
+		</div>
+		<div zclass="page-content" class="row">
+			<listbox id="lstProyecciones"
+				model="@bind(vMPry.proyecciones)"
+				emptyMessage="${labels.noExisProyecciones}"
+				onSelect="@command('politicas', proyeccion = self.selectedItem.value)"
+				mold="paging" autopaging="true" pageSize="5" rows="5">
+				<listhead>
+					<listheader label="${labels.anio }" />
+					<listheader label="${labels.fechaInicio }" />
+					<listheader label="${labels.fechaFin }" />
+					<listheader label="${labels.estado }" />
+					<listheader label="${labels.total }" />
+				</listhead>
+				<template name="model" var="fila">
+					<listitem value="@bind(fila)">
+						<listcell label="@load(fila.anio)" />
+						<listcell
+							label="@load(fila.fechaInicio) @converter('formatedDate',format='yyyy/MM/dd')" />
+						<listcell
+							label="@load(fila.fechaFin) @converter('formatedDate',format='yyyy/MM/dd')" />
+						<listcell label="@load(fila.estadoS)" />
+						<listcell
+							label="@load(fila.total) @converter('formatedNumber', format='#,##0.##')" />
+					</listitem>
+				</template>
+			</listbox>
+
+		</div>
+	</div>
+</zk>

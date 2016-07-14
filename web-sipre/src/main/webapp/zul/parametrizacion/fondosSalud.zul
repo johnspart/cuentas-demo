@@ -1,0 +1,35 @@
+<zk xmlns:n="native">
+	<div id="divSbrArchNomina" apply="org.zkoss.bind.BindComposer"
+		validationMessages="@id('vmsgs')"
+		viewModel="@id('vMFds') @init('co.com.sipre.vm.parametrizacion.VMFondosSalud')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.fndsSalud}</n:h4>
+			<button label="${labels.nvFondo }" class="btn btn-lg"
+				iconSclass="z-icon-plus" onClick="@command('nuevoFondoWnd')" />
+		</div>
+		<div zclass="page-content" class="row">
+			<listbox model="@bind(vMFds.fondosSalud)" rows="10"
+				onSelect="@command('editarFondoWnd', fnd = self.selectedItem.value)"
+				mold="paging" autopaging="true">
+				<listhead sizable="true">
+					<listheader label="${labels.codigoSalud }"
+						hflex="min" />
+					<listheader label="${labels.salud }" />
+					<listheader label="${labels.cuenta51 }" />
+					<listheader label="${labels.cuenta52 }" />
+					<listheader label="${labels.cuenta72 }" />
+				</listhead>
+				<template name="model" var="fila">
+					<listitem value="@bind(fila)">
+						<listcell label="@load(fila.codigo)" />
+						<listcell label="@load(fila.fondoSalud)" />
+						<listcell label="@load(fila.cuenta51)" />
+						<listcell label="@load(fila.cuenta52)" />
+						<listcell label="@load(fila.cuenta72)" />
+					</listitem>
+				</template>
+			</listbox>
+		</div>
+	</div>
+</zk>

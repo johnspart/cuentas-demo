@@ -1,0 +1,50 @@
+<zk xmlns:n="native">
+	<window id="wndDetalleNomina" mode="highlighted" width="350px"
+		title="${labels.dtllNomina }">
+		<grid>
+			<columns>
+				<column hflex="min" />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<n:label>${labels.anio }</n:label>
+					<label value="@load(vMNmn.nomina.anio)" />
+				</row>
+				<row>
+					<n:label>${labels.idArchivoNomina }</n:label>
+					<label
+						value="@load(vMNmn.nomina.idCatalogoEmpleado)" />
+				</row>
+				<row>
+					<n:label>${labels.fechaInicio }</n:label>
+					<label
+						value="@load(vMNmn.nomina.fechaInicio) @converter('formatedDate',format='yyyy/MM/dd')" />
+				</row>
+				<row>
+					<n:label>${labels.fechaFin }</n:label>
+					<label
+						value="@load(vMNmn.nomina.fechaFin) @converter('formatedDate',format='yyyy/MM/dd')" />
+				</row>
+				<row>
+					<n:label>${labels.estado }</n:label>
+					<label value="@load(vMNmn.nomina.estadoS)" />
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="20px" bar="true" visible="true" />
+
+		<div align="right">
+			<button label="${labels.editar }"
+				class="btn btn-lg btn-info" iconSclass="z-icon-pencil-square-o"
+				onClick="@command('explorarProyeccionNomina', wndDtllNomina = wndDetalleNomina)" />
+			<button label="${labels.eliminar }"
+				class="btn btn-lg btn-warning" iconSclass="z-icon-trash-o"
+				onClick="@command('eliminarProyeccionNomina', wndDtllNomina = wndDetalleNomina)" />
+			<button label="${labels.cancelar }"
+				class="btn btn-lg btn-danger" iconSclass="z-icon-times"
+				onClick="wndDetalleNomina.onClose()" />
+		</div>
+	</window>
+</zk>

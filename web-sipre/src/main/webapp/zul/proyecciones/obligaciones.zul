@@ -1,0 +1,27 @@
+<zk xmlns:n="native">
+	<div id="divObligaciones" apply="org.zkoss.bind.BindComposer"
+		validationMessages="@id('vmsgs')"
+		viewModel="@id('vMPry') @init('co.com.sipre.vm.proyecciones.VMObligaciones')">
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.administracion}</n:h4>
+
+			<button label="${labels.consolidarProyecciones }"
+				class="btn btn-info" iconSclass="z-icon-plus"
+				onClick="@command('consolidarProyecciones')" />
+
+			<separator orient="vertical" bar="true" width="10px" />
+			<button label="${labels.verAdjuntos }" class="btn btn-info"
+				iconSclass="z-icon-paperclip " onClick="@command('verAdjuntosWnd')" />
+
+			<button label="${labels.agregarObl }" class="btn btn-info"
+				iconSclass="z-icon-plus" onClick="@command('agregarObligacionWin')" />
+			<button label="${labels.removerObl }"
+				class="btn btn-lg btn-warning" iconSclass="z-icon-trash-o"
+				onClick="@command('eliminarObligacion', obligacion = lsbObligaciones.selectedItem.value)" />
+		</div>
+		<div zclass="page-content" class="row">
+			<include
+				src="/zul/proyecciones/components/obligacionLst.zul" />
+		</div>
+	</div>
+</zk>

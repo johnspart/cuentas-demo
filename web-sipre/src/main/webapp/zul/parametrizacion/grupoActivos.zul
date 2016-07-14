@@ -1,0 +1,68 @@
+<zk xmlns:n="native">
+	<div id="divAdmGrupoActivos" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMGrActivo') @init('co.com.sipre.vm.parametrizacion.VMGrupoActivos')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.hoCntgrActs}</n:h4>
+			<button label="${labels.nvGrActivo }"
+				tooltiptext="${labels.nvGrActivo}" class="btn btn-primary"
+				iconSclass="z-icon-list-alt"
+				onClick="@command('winNuevoGrupoActivo')" />
+
+
+			<button label="${labels.eliminar }"
+				tooltiptext="${labels.eliminar }"
+				onClick="@command('eliminarGrupoActivo', grAct = ltbGrActivos.selectedItem.value)"
+				class="btn btn-warning" iconSclass="z-icon-trash-o" />
+
+			<button label="${labels.agregar }"
+				tooltiptext="${labels.agregar}" class="btn btn-primary"
+				iconSclass="z-icon-list-alt"
+				onClick="@command('winAgregarCuentaCCO')" />
+			<button label="${labels.remover }"
+				tooltiptext="${labels.remover }"
+				onClick="@command('removerCuentaCCO', grActDtll = ltbGrAcDetalle.selectedItem.value)"
+				class="btn btn-danger" iconSclass="z-icon-minus-square" />
+		</div>
+		<div class="row" zclass="page-content">
+			<n:div class="col-md-8">
+				<listbox id="ltbGrActivos"
+					model="@bind(vMGrActivo.grupoActivos)" mold="paging" rows="15"
+					autopaging="true"
+					onSelect="@command('detalleGrupoActivo', grupoActivo = self.selectedItem.value)">
+					<listhead sizable="true">
+						<listheader label="${labels.codigo }"
+							hflex="min">
+						</listheader>
+						<listheader label="${labels.descripcion }" />
+					</listhead>
+					<template name="model" var="fila">
+						<listitem value="@bind(fila)">
+							<listcell label="@load(fila.codigo)" />
+							<listcell label="@load(fila.descripcion)" />
+						</listitem>
+					</template>
+				</listbox>
+			</n:div>
+			<n:div class="col-md-4">
+				<listbox id="ltbGrAcDetalle"
+					model="@bind(vMGrActivo.grupoActivoDetalles)" mold="paging"
+					rows="15" autopaging="true">
+					<listhead sizable="true">
+						<listheader sort="auto(cuenta)"
+							label="${labels.cuenta }" />
+						<listheader sort="auto(centroCosto)"
+							label="${labels.centroCosto }" />
+
+					</listhead>
+					<template name="model" var="fila">
+						<listitem value="@bind(fila)">
+							<listcell label="@load(fila.cuenta)" />
+							<listcell label="@load(fila.centroCosto)" />
+						</listitem>
+					</template>
+				</listbox>
+			</n:div>
+		</div>
+	</div>
+</zk>

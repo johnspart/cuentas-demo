@@ -1,0 +1,31 @@
+<zk xmlns:n="native">
+	<window id="wndNvPrynomina" mode="highlighted" closable="true"
+		title="${labels.nvProyeccionNomina }"
+		form="@id('frmNvPryNm') @load(vMNmn.nvNomina) @save(vMNmn.nvNomina, before='almacenarProyeccionNomina') @validator('co.com.sipre.validators.ValidatorNuevaProyeccionNomina')">
+		<hlayout valign="middle">
+			<n:h6>${labels.anio }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['codigo'])" />
+		</hlayout>
+		<combobox id="codigo" value="@bind(frmNvPryNm.codigo)"
+			model="@load(vMNmn.aniosAvalibles)" constraint="no empty"
+			placeholder="${labels.anio }" readonly="true" sclass="input-control" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.idArchivoNomina }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['valor'])" />
+		</hlayout>
+		<combobox id="valor" value="@bind(frmNvPryNm.valor)"
+			model="@load(vMNmn.consecutivosArchNomina)" constraint="no empty"
+			placeholder="${labels.idArchivoNomina }" readonly="true"
+			sclass="input-control" />
+		<separator height="10px" bar="true" visible="true" />
+		<div align="right">
+			<button iconSclass="z-icon-check"
+				class="btn btn-lg btn-success" tooltiptext="${labels.finalizar }"
+				onClick="@command('almacenarProyeccionNomina')" />
+			<button iconSclass="z-icon-times"
+				class="btn btn-lg btn-danger" tooltiptext="${labels.cancelar }"
+				onClick="wndNvPrynomina.onClose()" />
+		</div>
+	</window>
+</zk>

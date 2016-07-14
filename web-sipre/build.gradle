@@ -1,0 +1,51 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'jacoco'
+
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+eclipse{
+ 	wtp{
+  		facet{
+  			facet name: 'jst.web', version: '3.1'
+  		}
+ 	}
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+	compile 'org.zkoss.zk:zkbind:7.0.3'
+	compile 'org.zkoss.zk:zul:7.0.3'
+	compile 'org.zkoss.zk:zkplus:7.0.3'
+	compile 'org.zkoss.zk:zhtml:7.0.3'
+	compile 'commons-io:commons-io:2.4'
+
+	compile group: 'info.cukes', name: 'cucumber-java', version: '1.2.4'
+	
+	compile group: 'info.cukes', name: 'cucumber-junit', version: '1.2.4'
+	
+
+	compile 'org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec:1.0.0.Final'
+
+  	compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+  	testCompile group: 'junit', name: 'junit', version: '4.+'
+  	compile(group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.49.0')
+	compile(group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '2.49.0')
+    compile(group: 'info.cukes', name: 'cucumber-java', version: '1.2.4')
+	compile(group: 'info.cukes', name: 'cucumber-junit', version: '1.2.4')
+	compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '2.53.1'
+
+	
+}
+
+test {
+    systemProperties 'property': 'value'
+}

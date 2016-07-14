@@ -1,0 +1,53 @@
+<zk xmlns:n="native">
+	<window id="wndCmcCbcCntPrp" closable="true"
+		title="${labels.hmcCbcCuentaPrp }"
+		form="@id('frm') @load(vMHCCD.hmcCabCntDst) @save(vMHCCD.hmcCabCntDst, before='almacenarHmcCbcCntDst') @validator('co.com.sipre.validators.ValidatorHmcCbcCntDst')">
+
+		<hlayout valign="middle">
+			<n:h6>${labels.propiedad }</n:h6>
+			<label sclass="fg-red"
+				value="@bind(vmsgs['distribucionNomina'])" />
+		</hlayout>
+		<label id="distribucionNomina"
+			value="@bind(frm.distribucionNomina)" sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.cuenta51 }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['cuenta51'])" />
+		</hlayout>
+		<textbox id="cuenta51" value="@bind(frm.cuenta51)"
+			maxlength="50" constraint="no empty"
+			placeholder="${labels.cuenta51 }" type="text"
+			sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.cuenta52 }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['cuenta52'])" />
+		</hlayout>
+		<textbox id="cuenta52" value="@bind(frm.cuenta52)"
+			maxlength="50" constraint="no empty"
+			placeholder="${labels.cuenta52 }" type="text"
+			sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.cuenta72 }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['cuenta72'])" />
+		</hlayout>
+		<textbox id="cuenta72" value="@bind(frm.cuenta72)" maxlength="50"
+			constraint="no empty" placeholder="${labels.cuenta72 }" type="text"
+			sclass="input-control text" />
+
+		<separator bar="true" height="10px" />
+
+		<div align="right">
+			<button
+				onClick="@command('almacenarHmcCbcCntDst', wnd = wndCmcCbcCntPrp)"
+				iconSclass="z-icon-plus" class="btn btn-success" />
+			<button visible="@load(vMHCCD.swNuevo)"
+				onClick="@command('eliminarHmcCbcCntDst', wnd = wndCmcCbcCntPrp)"
+				iconSclass="z-icon-trash-o" class="btn btn-warning" />
+			<button onClick="wndCmcCbcCntPrp.onClose()"
+				iconSclass="z-icon-times" class="btn btn-danger" />
+		</div>
+	</window>
+</zk>

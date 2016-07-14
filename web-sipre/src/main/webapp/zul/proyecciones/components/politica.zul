@@ -1,0 +1,64 @@
+<zk xmlns:n="native">
+	<window title="${labels.agregarObl }" mode="highlighted"
+		closable="true" id="winPolitica"
+		form="@id('frm') @load(vMDPYP.politica) @save(vMDPYP.politica, before='almacenarPolitica') @validator('co.com.sipre.validators.ValidatorPolitica')">
+
+		<hlayout valign="middle">
+			<n:h6>${labels.proyeccion }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['annio'])" />
+		</hlayout>
+		<label id="annio" value="@bind(frm.annio)"
+			sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.cuenta }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['cuenta'])" />
+		</hlayout>
+		<textbox id="cuenta" value="@bind(frm.cuenta)" maxlength="50"
+			constraint="no empty" placeholder="${labels.cuenta }" type="text"
+			sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.centroCosto }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['centroCosto'])" />
+		</hlayout>
+		<intbox id="centroCosto" value="@bind(frm.centroCosto)"
+			maxlength="11" constraint="no empty"
+			placeholder="${labels.centroCosto }" sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.subCentro }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['subCentro'])" />
+		</hlayout>
+		<intbox id="subCentro" value="@bind(frm.subCentro)"
+			maxlength="11" constraint="no empty"
+			placeholder="${labels.subCentro }" sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.valorGasto }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['politica'])" />
+		</hlayout>
+		<decimalbox id="politica" value="@bind(frm.politica)"
+			maxlength="10" constraint="no empty" format="##,##%"
+			placeholder="${labels.valorGasto }" sclass="input-control text" />
+
+		<separator />
+		<hlayout valign="middle">
+			<checkbox id="exacta" checked="@bind(frm.exacta)"
+				label="${labels.exacta }" />
+			<label sclass="fg-red" value="@bind(vmsgs['exacta'])" />
+		</hlayout>
+		<separator />
+		<div align="right">
+			<button iconSclass="z-icon-check"
+				class="btn btn-lg btn-success" tooltiptext="${labels.finalizar }"
+				onClick="@command('almacenarPolitica', wnd = winPolitica)" />
+			<button tooltiptext="${labels.eliminar }"
+				class="btn btn-lg btn-warning" iconSclass="z-icon-trash-o"
+				onClick="@command('eliminarPolitica', wnd = winPolitica)" />
+			<button iconSclass="z-icon-times"
+				class="btn btn-lg btn-danger" tooltiptext="${labels.cancelar }"
+				onClick="winPolitica.onClose()" />
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,122 @@
+<zk xmlns:n="native">
+	<window id="winGastoGlobal" mode="highlighted" width="650px"
+		title="${labels.dtllDependencia }"
+		form="@id('frmNvDepend') @load(vMdepend.nvDependencia) @save(vMdepend.nvDependencia, before='almacenarDependencia')">
+
+		<grid>
+			<rows>
+				<row>
+					<n:label>${labels.centroCosto }</n:label>
+					<intbox id="ccosto"
+						value="@bind(frmNvDepend.centroCosto)" maxlength="20"
+						constraint="no empty" width="120px"
+						placeholder="${labels.centroCosto}" sclass="input-control text" />
+					<n:label>${labels.subCentro }</n:label>
+					<intbox id="subccosto"
+						value="@bind(frmNvDepend.subCentro)" maxlength="20"
+						constraint="no empty" width="120px"
+						placeholder="${labels.subCentro}" sclass="input-control text" />
+				</row>
+				<row>
+					<n:label>${labels.descripcion }</n:label>
+					<cell colspan="3">
+						<textbox id="descripcion" width="310px"
+							value="@bind(frmNvDepend.descripcion)" maxlength="150"
+							constraint="no empty" type="text"
+							placeholder="${labels.descripcion }" sclass="input-control text" />
+					</cell>
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="40px" bar="true" visible="true" />
+
+		<n:div class="row">
+			<n:div class="col-md-3">
+				<n:h6>${labels.nroPersonas }</n:h6>
+			</n:div>
+			<n:div class="col-md-3">
+				<intbox id="nroPersonas"
+					value="@bind(frmNvDepend.nroPersonas)" maxlength="20"
+					width="120px" />
+			</n:div>
+			<n:div class="col-md-3">
+				<n:h6>${labels.nroPersAseg}</n:h6>
+			</n:div>
+			<n:div class="col-md-3">
+				<intbox id="nroPersAseg"
+					value="@bind(frmNvDepend.nroPersonasAseg)" maxlength="20"
+					width="120px" />
+			</n:div>
+		</n:div>
+
+		<n:div class="row">
+			<n:div class="col-md-3">
+				<n:h6>${labels.areaMt }</n:h6>
+			</n:div>
+			<n:div class="col-md-3">
+				<intbox id="areaMt" value="@bind(frmNvDepend.areaMt)"
+					maxlength="20" width="120px" />
+			</n:div>
+			<n:div class="col-md-3">
+				<n:h6>${labels.extTelef}</n:h6>
+			</n:div>
+			<n:div class="col-md-3">
+				<intbox id="extTelef"
+					value="@bind(frmNvDepend.extTelefonicas)" maxlength="20"
+					width="120px" />
+			</n:div>
+		</n:div>
+
+		<n:div class="row">
+			<n:div class="col-md-3">
+				<n:h6>${labels.nroEqComp }</n:h6>
+			</n:div>
+			<n:div class="col-md-3">
+				<intbox id="nroEqComp"
+					value="@bind(frmNvDepend.nroEquiposComp)" maxlength="20"
+					width="120px" />
+			</n:div>
+			<n:div class="col-md-3">
+				<n:h6>${labels.nroVehic}</n:h6>
+			</n:div>
+			<n:div class="col-md-3">
+				<intbox id="nroVehic"
+					value="@bind(frmNvDepend.nroVehiculos)" maxlength="20"
+					width="120px" />
+			</n:div>
+		</n:div>
+
+		<n:div class="row">
+			<n:div class="col-md-3">
+				<n:h6>${labels.nroVehiAseg }</n:h6>
+			</n:div>
+			<n:div class="col-md-3">
+				<intbox id="nroVehiAseg"
+					value="@bind(frmNvDepend.nroVehiAsegurados)" maxlength="20"
+					width="120px" />
+			</n:div>
+			<n:div class="col-md-3">
+				<n:h6>${labels.nroPersCel}</n:h6>
+			</n:div>
+			<n:div class="col-md-3">
+				<intbox id="nroPersCel"
+					value="@bind(frmNvDepend.nroPersCelular)" maxlength="20"
+					width="120px" />
+			</n:div>
+		</n:div>
+
+		<div align="right">
+			<button iconSclass="z-icon-check" label="${labels.guardar }"
+				class="btn btn-lg btn-success"
+				onClick="@command('almacenarDependencia')" />
+			<button label="${labels.eliminar }"
+				tooltiptext="${labels.eliminar }"
+				onClick="@command('eliminarDependencia')" class="btn btn-warning"
+				iconSclass="z-icon-trash-o" />
+			<button label="${labels.cancelar }"
+				iconSclass="z-icon-times" class="btn btn-lg btn-danger"
+				onClick="winGastoGlobal.onClose()" />
+		</div>
+	</window>
+</zk>

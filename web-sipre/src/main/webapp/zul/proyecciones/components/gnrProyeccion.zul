@@ -1,0 +1,20 @@
+<zk xmlns:n="native">
+	<window id="wndGnrPry" mode="highlighted" closable="true"
+		title="${labels.fechaCorte }">
+		<n:h6>${labels.fechaCorte }</n:h6>
+		<datebox id="dtbFechaCorte" constraint="no future"
+			placeholder="${labels.fechaCorte }" readonly="true"
+			sclass="input-control" format="yyyy/MM/dd" />
+
+		<separator height="10px" bar="true" visible="true" />
+
+		<div align="right">
+			<button iconSclass="z-icon-check"
+				class="btn btn-lg btn-success" tooltiptext="${labels.gnr }"
+				onClick="@command('generarProyeccionAnioCurso', fechaCorte = dtbFechaCorte.value, wnd = wndGnrPry)" />
+			<button iconSclass="z-icon-times"
+				class="btn btn-lg btn-danger" tooltiptext="${labels.cancelar }"
+				onClick="wndGnrPry.onClose()" />
+		</div>
+	</window>
+</zk>

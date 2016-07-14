@@ -1,0 +1,36 @@
+<div xmlns:n="native" sclass="navbar"
+	apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vMNB') @init('co.com.sipre.vm.components.VMNavBar')"
+	width="100%">
+
+	<a label="${labels.nombreAplicacion } " href="/index.zul"
+		sclass="pull-left navbar-brand" iconSclass="z-icon-briefcase"
+		height="100%" />
+	<a label="${labels.nombreCompletoApp}" visible="true"
+		class="nombreCompletoApp"
+		style="float: left !important; color: #FFF; margin-top: 18px;"
+		href="/index.zul" />
+
+	<!-- Navbar -->
+	<hlayout sclass="nav-user pull-right" spacing="0">
+
+		<!-- Menu de Usuario -->
+		<menubar sclass="user-menu light-blue" height="100%"
+			width="230px">
+			<menu tooltiptext="${ vMNB.usuario}" width="230px"
+				label="${labels.bienvenido }, ${ vMNB.nombre}"
+				iconSclass="z-icon-user">
+				<menupopup width="230px">
+					<menuitem label="${labels.perfil }" id="perfil"
+						onClick="@command('verPerfil')" iconSclass="z-icon-user" />
+					<menuitem label="${labels.ayuda }"
+						href="/resources/Manual de usuario.pdf"
+						iconSclass="z-icon-question-circle" />
+					<menuitem label="${labels.salir }"
+						href="/j_spring_security_logout" iconSclass="z-icon-sign-out" />
+				</menupopup>
+			</menu>
+		</menubar>
+	</hlayout>
+
+</div>

@@ -1,0 +1,170 @@
+<zk xmlns:n="native">
+	<n:div class="row">
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.ene }</n:h6>
+					<label sclass="fg-red" value="@bind(vmsgs['ene'])" />
+				</hlayout>
+				<decimalbox class="form-control"
+					value="@bind(vMObl.oblDetallePorMes.ene)"
+					onChange="@command('actualizarTotal')" instant="true"
+					format="#,##0.##" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.feb }</n:h6>
+					<label sclass="fg-red" value="@bind(vmsgs['feb'])" />
+				</hlayout>
+				<decimalbox class="form-control"
+					value="@bind(vMObl.oblDetallePorMes.feb)"
+					onChange="@command('actualizarTotal')" instant="true"
+					format="#,##0.##" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.mar }</n:h6>
+					<label sclass="fg-red" value="@bind(vmsgs['mar'])" />
+				</hlayout>
+				<decimalbox class="form-control"
+					value="@bind(vMObl.oblDetallePorMes.mar)"
+					onChange="@command('actualizarTotal')" instant="true"
+					format="#,##0.##" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.abr }</n:h6>
+					<label sclass="fg-red" value="@bind(vmsgs['abr'])" />
+				</hlayout>
+				<decimalbox class="form-control"
+					value="@bind(vMObl.oblDetallePorMes.abr)"
+					onChange="@command('actualizarTotal')" instant="true"
+					format="#,##0.##" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.may }</n:h6>
+					<label sclass="fg-red" value="@bind(vmsgs['may'])" />
+				</hlayout>
+				<decimalbox class="form-control"
+					value="@bind(vMObl.oblDetallePorMes.may)"
+					onChange="@command('actualizarTotal')" instant="true"
+					format="#,##0.##" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.jun }</n:h6>
+					<label sclass="fg-red" value="@bind(vmsgs['jun'])" />
+				</hlayout>
+				<decimalbox class="form-control"
+					value="@bind(vMObl.oblDetallePorMes.jun)"
+					onChange="@command('actualizarTotal')" instant="true"
+					format="#,##0.##" />
+			</n:div>
+		</n:div>
+	</n:div>
+	<n:div class="row">
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.jul }</n:h6>
+					<label sclass="fg-red" value="@bind(vmsgs['jul'])" />
+				</hlayout>
+				<decimalbox class="form-control"
+					value="@bind(vMObl.oblDetallePorMes.jul)"
+					onChange="@command('actualizarTotal')" instant="true"
+					format="#,##0.##" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.ago }</n:h6>
+					<label sclass="fg-red" value="@bind(vmsgs['ago'])" />
+				</hlayout>
+				<decimalbox class="form-control"
+					value="@bind(vMObl.oblDetallePorMes.ago)"
+					onChange="@command('actualizarTotal')" instant="true"
+					format="#,##0.##" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.sep }</n:h6>
+					<label sclass="fg-red" value="@bind(vmsgs['sep'])" />
+				</hlayout>
+				<decimalbox class="form-control"
+					value="@bind(vMObl.oblDetallePorMes.sep)"
+					onChange="@command('actualizarTotal')" instant="true"
+					format="#,##0.##" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.oct }</n:h6>
+					<label sclass="fg-red" value="@bind(vmsgs['oct'])" />
+				</hlayout>
+				<decimalbox class="form-control"
+					value="@bind(vMObl.oblDetallePorMes.oct)"
+					onChange="@command('actualizarTotal')" instant="true"
+					format="#,##0.##" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.nov }</n:h6>
+					<label sclass="fg-red" value="@bind(vmsgs['nov'])" />
+				</hlayout>
+				<decimalbox class="form-control"
+					value="@bind(vMObl.oblDetallePorMes.nov)"
+					onChange="@command('actualizarTotal')" instant="true"
+					format="#,##0.##" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.dic }</n:h6>
+					<label sclass="fg-red" value="@bind(vmsgs['dic'])" />
+				</hlayout>
+				<decimalbox class="form-control"
+					value="@bind(vMObl.oblDetallePorMes.dic)"
+					onChange="@command('actualizarTotal')" instant="true"
+					format="#,##0.##" />
+			</n:div>
+		</n:div>
+	</n:div>
+	<n:div class="row">
+		<n:div class="col-md-4">
+			<n:div class="form-group">
+				<n:label class="control-label">
+					${labels.total }
+				</n:label>
+				<decimalbox class="form-control" readonly="true"
+					value="@bind(vMObl.oblDetallePorMes.total) " format="#,##0.##" />
+			</n:div>
+		</n:div>
+		<!--<n:div class="col-md-4">
+			<n:div class="form-group">
+			<label value="${labels.totalIva }" class="control-label"
+			visible="@load(vMObl.evaluarCuentaIva)" />
+			<decimalbox class="form-control" readonly="true"
+			value="@bind(vMObl.oblDetallePorMes.totalIva) " format="#,##0.##"
+			visible="@load(vMObl.evaluarCuentaIva)" />
+			</n:div>
+			</n:div> -->
+	</n:div>
+</zk>

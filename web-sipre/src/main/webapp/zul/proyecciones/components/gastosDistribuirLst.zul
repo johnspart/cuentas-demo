@@ -1,0 +1,57 @@
+<zk xmlns:n="native">
+	<div apply=" org.zkoss.bind.BindComposer "
+		viewModel="@id('vMDbgLst') @init('co.com.sipre.vm.proyecciones.components.VMDistribucionGastosLst')">
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.dtllPryDistrGastos}</n:h4>
+			<button label="${labels.exportar }"
+				class="btn btn-lg btn-info" iconSclass="z-icon-download "
+				onClick="@command('exportar', lst = lstDistribucion)" />
+			<button label="${labels.eliminar }"
+				tooltiptext="${labels.eliminar }"
+				onClick="@command('eliminarDistrGastos')" class="btn btn-warning"
+				iconSclass="z-icon-trash-o" />
+		</div>
+		<div class="row" zclass="page-content">
+			<listbox id="lstDistribucion"
+				onSelect="@command('detalleGastoDistribuido', gastoDistribuido = self.selectedItem.value)"
+				model="@bind(vMDbgLst.distribucionGastosProyecciones)">
+				<listhead>
+					<listheader hflex="min"
+						iconSclass="z-icon-filter">
+						<intbox instant="true"
+							placeholder="${labels.centroCosto }"
+							value="@bind(vMDbgLst.dbgFilter.centroCosto)"
+							onChange="@global-command('filtrarDistribuciones')" />
+					</listheader>
+					<listheader hflex="min"
+						iconSclass="z-icon-filter">
+						<intbox instant="true"
+							placeholder="${labels.subCentro }"
+							value="@bind(vMDbgLst.dbgFilter.subCentro)"
+							onChange="@global-command('filtrarDistribuciones')" />
+					</listheader>
+					<listheader hflex="min"
+						iconSclass="z-icon-filter">
+						<intbox instant="true"
+							placeholder="${labels.cuenta }"
+							value="@bind(vMDbgLst.dbgFilter.cuenta)"
+							onChange="@global-command('filtrarDistribuciones')" />
+					</listheader>
+					<listheader label="${labels.descripcion}" />
+					<listheader label="${labels.total}" />
+				</listhead>
+				<template name="model" var="fila">
+					<listitem value="@bind(fila)">
+						<listcell label="@load(fila.centroCosto)" />
+						<listcell label="@load(fila.subCentro)" />
+						<listcell label="@load(fila.cuenta)" />
+						<listcell
+							label="@load(fila.dsDistribucionGasto)" />
+						<listcell
+							label="@load(fila.total) @converter('formatedNumber', format='#,##0.##')" />
+					</listitem>
+				</template>
+			</listbox>
+		</div>
+	</div>
+</zk>

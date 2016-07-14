@@ -1,0 +1,123 @@
+<zk xmlns:n="native">
+	<n:div class="row">
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<n:h6>${labels.ene }</n:h6>
+				<label class="form-control"
+					value="@bind(vMDbgLst.distrGastosDtllPorMes.ene) @converter('formatedNumber', format='#,##0.##')" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.feb }</n:h6>
+				</hlayout>
+				<label class="form-control"
+					value="@bind(vMDbgLst.distrGastosDtllPorMes.feb) @converter('formatedNumber', format='#,##0.##')" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.mar }</n:h6>
+				</hlayout>
+				<label class="form-control"
+					value="@bind(vMDbgLst.distrGastosDtllPorMes.mar) @converter('formatedNumber', format='#,##0.##')" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.abr }</n:h6>
+				</hlayout>
+				<label class="form-control"
+					value="@bind(vMDbgLst.distrGastosDtllPorMes.abr) @converter('formatedNumber', format='#,##0.##')" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.may }</n:h6>
+				</hlayout>
+				<label class="form-control"
+					value="@bind(vMDbgLst.distrGastosDtllPorMes.may) @converter('formatedNumber', format='#,##0.##')" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.jun }</n:h6>
+				</hlayout>
+				<label class="form-control"
+					value="@bind(vMDbgLst.distrGastosDtllPorMes.jun) @converter('formatedNumber', format='#,##0.##')" />
+			</n:div>
+		</n:div>
+	</n:div>
+	<n:div class="row">
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.jul }</n:h6>
+				</hlayout>
+				<label class="form-control"
+					value="@bind(vMDbgLst.distrGastosDtllPorMes.jul) @converter('formatedNumber', format='#,##0.##')" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.ago }</n:h6>
+				</hlayout>
+				<label class="form-control"
+					value="@bind(vMDbgLst.distrGastosDtllPorMes.ago) @converter('formatedNumber', format='#,##0.##')" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.sep }</n:h6>
+				</hlayout>
+				<label class="form-control"
+					value="@bind(vMDbgLst.distrGastosDtllPorMes.sep) @converter('formatedNumber', format='#,##0.##')" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.oct }</n:h6>
+				</hlayout>
+				<label class="form-control"
+					value="@bind(vMDbgLst.distrGastosDtllPorMes.oct) @converter('formatedNumber', format='#,##0.##')" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.nov }</n:h6>
+				</hlayout>
+				<label class="form-control"
+					value="@bind(vMDbgLst.distrGastosDtllPorMes.nov) @converter('formatedNumber', format='#,##0.##')" />
+			</n:div>
+		</n:div>
+		<n:div class="col-md-2">
+			<n:div class="form-group">
+				<hlayout valign="middle">
+					<n:h6>${labels.dic }</n:h6>
+				</hlayout>
+				<label class="form-control"
+					value="@bind(vMDbgLst.distrGastosDtllPorMes.dic) @converter('formatedNumber', format='#,##0.##')" />
+			</n:div>
+		</n:div>
+	</n:div>
+	<n:div class="row">
+		<n:div class="col-md-4">
+			<n:div class="form-group">
+				<n:label class="control-label">
+					${labels.totalAnual }
+				</n:label>
+				<label class="form-control"
+					value="@load(vMDbgLst.distrGastosDtllPorMes.total)  @converter('formatedNumber', format='#,##0.##')" />
+			</n:div>
+		</n:div>
+	</n:div>
+</zk>

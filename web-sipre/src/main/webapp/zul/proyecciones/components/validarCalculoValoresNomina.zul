@@ -1,0 +1,47 @@
+<zk xmlns:n="native">
+	<window id="wndValNominaCal" mode="highlighted"
+		title="${labels.validarCalNom }" closable="true">
+		<listbox model="@bind(vMNmn.nominasDetalleCaculadas)">
+			<listhead>
+				<listheader sort="auto(numeroDocumento)"
+					label="${labels.numDocumento }" hflex="min" />
+				<listheader sort="auto(nombre)"
+					label="${labels.nombre }" />
+				<listheader sort="auto(fechaIngreso)"
+					label="${labels.fechaIngreso }" hflex="min" />
+				<listheader sort="auto(salario)"
+					label="${labels.sueldoAnt }" hflex="min" />
+				<listheader sort="auto(salarioNuevo)"
+					label="${labels.sueldo }" hflex="min" />
+				<listheader sort="auto(subsidioTransporte)"
+					label="${labels.subsidioTransporteAnt }" hflex="min" />
+				<listheader sort="auto(subsidioTransporteNuevo)"
+					label="${labels.subsidioTransporte }" hflex="min" />
+			</listhead>
+			<template name="model" var="fila">
+				<listitem value="@bind(fila)">
+					<listcell label="@load(fila.numeroDocumento)" />
+					<listcell label="@load(fila.nombre)" />
+					<listcell label="@load(fila.fechaIngreso)" />
+					<listcell
+						label="@load(fila.salario) @converter('formatedNumber', format='#,##0.##')" />
+					<listcell
+						label="@load(fila.salarioNuevo) @converter('formatedNumber', format='#,##0.##')" />
+					<listcell
+						label="@load(fila.subsidioTransporte) @converter('formatedNumber', format='#,##0.##')" />
+					<listcell
+						label="@load(fila.subsidioTransporteNuevo) @ converter ('formatedNumber', format='#,##0.##' )" />
+				</listitem>
+			</template>
+		</listbox>
+
+		<div align="right">
+			<button iconSclass="z-icon-check"
+				class="btn btn-lg btn-success" tooltiptext="${labels.finalizar }"
+				onClick="@command('actualizarNominaByCalculada')" />
+			<button iconSclass="z-icon-times"
+				class="btn btn-lg btn-danger" tooltiptext="${labels.cancelar }"
+				onClick="wndValNominaCal.onClose()" />
+		</div>
+	</window>
+</zk>

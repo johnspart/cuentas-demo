@@ -1,0 +1,66 @@
+<div xmlns:n="native" id="sidebar" sclass="sidebar">
+	<!-- MENU -->
+	<navbar id="navbar" sclass="nav-list" orient="vertical"
+		onSelect="@command('redirectPage', selectItemId = self.selectedItem.id, mainInclude = mainInclude)"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMSidebar') @init('co.com.sipre.vm.components.VMSidebar')">
+		<navitem label="${labels.inicio }" iconSclass="z-icon-home"
+			selected="true" />
+		<nav label="${labels.parametrizacion }"
+			iconSclass="z-icon-wrench">
+			<navitem label="${labels.prop }" id="propiedades"
+				iconSclass="z-icon-angle-double-right" />
+			<navitem label="${labels.archsNomina }" id="archNomina"
+				iconSclass="z-icon-angle-double-right" />
+			<nav label="${labels.fnds }" visible="false"
+				iconSclass="z-icon-angle-double-right" sclass="grey">
+				<navitem label="${labels.fndsSalud }" id="fndSalud"
+					iconSclass="z-icon-angle-double-right" />
+				<navitem label="${labels.fndsPension }" id="fndPension"
+					iconSclass="z-icon-angle-double-right" />
+			</nav>
+			<navitem label="${labels.hmcCbcCuentaPrp }"
+				id="hmcCbcCntPrp" iconSclass="z-icon-angle-double-right" />
+			<navitem label="${labels.dbgGlobal }" id="dbgGlobal"
+				iconSclass="z-icon-angle-double-right" />
+			<navitem label="${labels.dependencias }" id="dependencias"
+				iconSclass="z-icon-angle-double-right" />
+
+			<nav label="${labels.activosFijos }" visible="false">
+				<navitem label="${labels.hCgrAct}" id="grActivos"
+					iconSclass="z-icon-angle-double-right" />
+				<navitem label="${labels.activosFijos }" id="actFijos"
+					iconSclass="z-icon-angle-double-right" />
+			</nav>
+		</nav>
+		<nav label="${labels.proyecciones }"
+			iconSclass="z-icon-bar-chart">
+			<navitem label="${labels.administracion }"
+				id="admProyecciones" iconSclass="z-icon-angle-double-right" />
+			<navitem label="${labels.politicas }" id="admPoliticas"
+				iconSclass="z-icon-angle-double-right" />
+			<navitem label="${labels.nomina }" id="admNomina"
+				iconSclass="z-icon-angle-double-right" />
+			<navitem label="${labels.misObligaciones }"
+				id="misProyecciones" iconSclass="z-icon-angle-double-right" />
+			<navitem label="${labels.distribucionGastos }"
+				id="distribucionGastos" iconSclass="z-icon-angle-double-right" />
+			<navitem label="${labels.depreciacion }"
+				id="pryDepreciaciones" iconSclass="z-icon-angle-double-right" />
+		</nav>
+		<nav label="${labels.usuarios }" iconSclass="z-icon-users">
+			<navitem label="${labels.roles }" id="admRoles"
+				iconSclass="z-icon-angle-double-right" />
+			<navitem label="${labels.adminAcceso }" id="admUsuarios"
+				iconSclass="z-icon-angle-double-right" />
+			<navitem label="${labels.asignarPryUsr }" id="asigOblUsr"
+				iconSclass="z-icon-angle-double-right" />
+		</nav>
+		<nav label="${labels.informes }"
+			iconSclass="z-icon-clipboard">
+			<navitem label="${labels.exportProyeccion}" id="expPrySIIGO"
+				iconSclass="z-icon-angle-double-right" />
+		</nav>
+	</navbar>
+	<image src="/resources/ima/logoCRCA.gif" width="189px" />
+</div>

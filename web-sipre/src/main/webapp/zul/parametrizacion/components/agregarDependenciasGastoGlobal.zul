@@ -1,0 +1,27 @@
+<zk xmlns:n="native">
+	<window id="wndAgrDependencia" mode="highlighted" closable="true">
+		<n:h6>${labels.dependencia }</n:h6>
+		<label sclass="fg-red" />
+		<listbox id="lsbDependencia" mold="select" class="form-control"
+			model="@load(vMgastgl.dependencias)">
+			<template name="model" var="fila">
+				<listitem label="@load(fila.descripcion)"
+					value="@load(fila)" />
+			</template>
+		</listbox>
+		<n:h6>${labels.cuenta }</n:h6>
+		<label sclass="fg-red" />
+		<textbox id="txbCuenta" maxlength="50" constraint="no empty"
+			placeholder="${labels.cuenta }" />
+
+		<separator bar="true" visible="true" height="20px" />
+
+		<div align="right">
+			<button iconSclass="z-icon-check"
+				class="btn btn-lg btn-success"
+				onClick="@command('agrDependencia', dependencia = lsbDependencia.selectedItem.value, cuenta = txbCuenta.value)" />
+			<button iconSclass="z-icon-times"
+				class="btn btn-lg btn-danger" onClick="wndAgrDependencia.onClose()" />
+		</div>
+	</window>
+</zk>

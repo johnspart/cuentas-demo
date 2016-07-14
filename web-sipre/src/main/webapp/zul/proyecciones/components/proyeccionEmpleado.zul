@@ -1,0 +1,162 @@
+<zk xmlns:n="native" xmlns:w='client'>
+	<window id="wndPryEmpleado" mode="highlighted"
+		title="${labels.proyectarNvEmpleados }" closable="true" width="900px"
+		apply="org.zkoss.bind.BindComposer" validationMessages="@id('vmsgs')"
+		viewModel="@id('vMPre') @init('co.com.sipre.vm.proyecciones.components.VMProyectarEmpleados')">
+		<grid>
+			<rows>
+				<row>
+					<n:label>${labels.cuenta }</n:label>
+					<label value="@load(vMPre.obligacion.cuenta)" />
+					<n:label>${labels.descripcion }</n:label>
+					<label value="@load(vMPre.obligacion.descripcion)" />
+				</row>
+				<row>
+					<n:label>${labels.centroCosto }</n:label>
+					<label value="@load(vMPre.obligacion.centroCosto)" />
+					<n:label>${labels.subCentro }</n:label>
+					<label value="@load(vMPre.obligacion.subCentro)" />
+				</row>
+			</rows>
+		</grid>
+
+		<listbox id="lsbEmplPrys" model="@bind(vMPre.empleados)"
+			w:onSelect="jq(this.$f('t')).slideDown(1000)"
+			onSelect="@command('selecEmpleado', emp  = self.selectedItem.value)"
+			mold="paging" autopaging="true" rows="5" pageSize="5">
+			<listhead sizable="true">
+				<listheader label="${labels.descripcion }" />
+				<listheader label="${labels.fechaIngreso }" hflex="min" />
+				<listheader label="${labels.fechaRetiro }" hflex="min" />
+				<listheader label="${labels.sueldo }" hflex="min" />
+				<listheader label="${labels.estado }" hflex="min" />
+			</listhead>
+			<template name="model" var="fila">
+				<listitem value="@bind(fila)">
+					<listcell label="@load(fila.descripcion) " />
+					<listcell
+						label="@load(fila.fechaIngreso) @converter('formatedDate',format='yyyy/MM/dd')" />
+					<listcell
+						label="@load(fila.fechaRetiro) @converter('formatedDate',format='yyyy/MM/dd')" />
+					<listcell
+						label="@load(fila.sueldo) @converter('formatedNumber', format='#,##0.##')" />
+					<listcell label="@load(fila.estadoS)" />
+				</listitem>
+			</template>
+		</listbox>
+		
+		<separator height="40px" bar="true" visible="true" />
+		
+		<button label="${labels.nuevo }"
+			onClick="@command('nuevoEmpleado')"
+			w:onClick="jq(this.$f('t')).slideDown(1000)" />
+
+		<div id="t"
+			form="@id('frmEmpl') @load(vMPre.empleado) @save(vMPre.empleado, before='almacenarEmpleado') @validator('co.com.sipre.validators.ValidatorProyectarEmpleado')">
+			<n:div class="row">
+				<n:div class="col-md-3">
+					<n:h6>${labels.fechaIngreso }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['fechaIngreso'])" />
+				</n:div>
+				<n:div class="col-md-3">
+					<n:h6>${labels.fechaRetiro }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['fechaRetiro'])" />
+				</n:div>
+				<n:div class="col-md-6">
+					<n:h6>${labels.descripcion }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['descripcion'])" />
+				</n:div>
+			</n:div>
+
+			<n:div class="row">
+				<n:div class="col-md-3">
+					<datebox id="fechaIngreso" width="200px"
+						value="@bind(frmEmpl.fechaIngreso)" constraint="no empty"
+						placeholder="${labels.fechaIngreso }" readonly="true"
+						sclass="input-control text" />
+				</n:div>
+				<n:div class="col-md-3">
+					<datebox id="fechaRetiro" width="200px"
+						value="@bind(frmEmpl.fechaRetiro)"
+						placeholder="${labels.fechaRetiro }" readonly="false"
+						sclass="input-control text" />
+				</n:div>
+				<n:div class="col-md-6">
+					<textbox id="descripcion" width="400px"
+						value="@bind(frmEmpl.descripcion)" maxlength="999"
+						constraint="no empty" placeholder="${labels.descripcion }"
+						type="text" sclass="input-control text" />
+				</n:div>
+			</n:div>
+
+			<n:div class="row">
+				<n:div class="col-md-3">
+					<n:h6>${labels.sueldo }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['salario'])" />
+				</n:div>
+				<n:div class="col-md-3">
+					<n:h6>${labels.dotacionMes }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['dotacionMensual'])" />
+				</n:div>
+				<n:div class="col-md-2">
+					<n:h6>${labels.promedioComisiones }</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['comision'])" />
+				</n:div>
+				<n:div class="col-md-4">
+					<n:h6>${labels.promRecgHorExtMes}</n:h6>
+					<label sclass="fg-red"
+						value="@bind(vmsgs['promRecHorExtrMes'])" />
+				</n:div>
+			</n:div>
+
+			<n:div class="row">
+				<n:div class="col-md-3">
+					<decimalbox id="salario" width="200px"
+						value="@bind(frmEmpl.salario)" format="#,##0.##" maxlength="20"
+						constraint="no empty" placeholder="${labels.sueldo }"
+						sclass="input-control text" />
+				</n:div>
+				<n:div class="col-md-3">
+					<decimalbox id="dotacionMensual" format="#,##0.##" width="200px"
+						value="@bind(frmEmpl.dotacionMensual)" maxlength="20"
+						constraint="no empty" placeholder="${labels.dotacionMes }"
+						sclass="input-control text" />
+				</n:div>
+				<n:div class="col-md-2">
+					<decimalbox id="comision" format="#,##0.##" width="120px"
+						value="@bind(frmEmpl.comision)" maxlength="20"
+						constraint="no empty" placeholder="${labels.promedioComisiones }"
+						sclass="input-control text" />
+				</n:div>
+				<n:div class="col-md-4">
+					<decimalbox id="promRecHorExtrMes" width="250px"
+						value="@bind(frmEmpl.promRecHorExtrMes)" maxlength="20"
+						format="#,##0.##" constraint="no empty"
+						placeholder="${labels.promRecgHorExtMes }"
+						sclass="input-control text" />
+				</n:div>
+			</n:div>
+			
+			<separator height="40px" bar="true" visible="true" />
+			
+			<div>
+				<button label="${labels.guardar }"
+					onClick="@command('almacenarEmpleado')"
+					iconSclass="z-icon-floppy-o" />
+				<button label="${labels.eliminar }"
+					onClick="@command('eliminarEmpleado')"
+					w:onClick="jq(this.$f('t')).slideToggle(1000)"
+					iconSclass="z-icon-trash-o" />
+				<button label="${labels.cancelar }"
+					onClick="@command('cancelar')" iconSclass="z-icon-sign-out"
+					w:onClick="jq(this.$f('t')).slideToggle(1000)" />
+			</div>
+		</div>
+	</window>
+</zk>

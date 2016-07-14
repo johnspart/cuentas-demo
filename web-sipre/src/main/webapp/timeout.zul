@@ -1,0 +1,22 @@
+<?page title="${labels.accesoDenegado}" contentType="text/html;charset=ISO-8859-1"?>
+<?link rel="shortcut icon" href="/resources/img/book_open2.ico" type="image/x-icon"?>
+<zk>
+	<zscript><![CDATA[
+	if (!org.springframework.security.core.context.SecurityContextHolder
+			.getContext().getAuthentication().getName().equals("anonymousUser")) {
+		Executions.sendRedirect("/j_spring_security_logout");
+	}
+]]></zscript>
+
+	<script type="text/javascript">
+		setTimeout("window.location='login.zul'",5000);
+	</script>
+	<window border="none" position="center" mode="highlighted">
+		<separator />
+		<label value="${labels.errorAccesoTimeOut }"
+			style="font-weight: bold; font-size: 1.3em;" />
+		<separator />
+	</window>
+
+
+</zk>

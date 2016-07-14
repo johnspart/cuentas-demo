@@ -1,0 +1,17 @@
+<zk xmlns:n="native">
+	<div id="divAdmProyeccion" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMPry') @init('co.com.sipre.vm.proyecciones.VMAdministrarPry')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.administracion}</n:h4>
+			<button label="${labels.gnrPryAnioCurso }"
+				class="btn btn-info" iconSclass="z-icon-download"
+				onClick="@command('winGenerarProyeccion')" />
+		</div>
+		<div zclass="page-content" class="row">
+			<include
+				src="/zul/proyecciones/components/proyeccionLst.zul" />
+
+		</div>
+	</div>
+</zk>

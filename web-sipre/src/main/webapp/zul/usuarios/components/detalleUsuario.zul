@@ -1,0 +1,51 @@
+<zk xmlns:n="native">
+	<window id="winDtllUsr" mode="highlighted" width="400px"
+		title="${labels.dtllUsr }">
+		<grid>
+			<columns>
+				<column width="100px" />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<n:label>${labels.usuario }</n:label>
+					<label value="@bind(vMAdmAcs.usuarioRol.username)" />
+				</row>
+				<row>
+					<n:label>${labels.nombre }</n:label>
+					<label value="@bind(vMAdmAcs.usuarioRol.nombre)" />
+				</row>
+				<row>
+					<n:label>${labels.email }</n:label>
+					<label value="@bind(vMAdmAcs.usuarioRol.email)" />
+				</row>
+				<row>
+					<n:label>${labels.rol }</n:label>
+					<combobox id="cmbRolUsr" readonly="true"
+						selectedItem="@bind(vMAdmAcs.usuarioRol.rol)"
+						model="@load(vMAdmAcs.roles)" >
+						<template name="model" var = "fila">
+							<comboitem value="@bind(fila)" label="@load(fila.rol)"/>
+						</template>	
+					</combobox>
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="20px" bar="true" visible="true" />
+		<textbox id="txtUsernameLoad" placeholder="${labels.usrLdap }"
+			visible="@bind(vMAdmAcs.swCreacion)">
+		</textbox>
+		<div align="right">
+			<button label="${labels.cargarUsuario }"
+				class="btn btn-lg btn-info" iconSclass="z-icon-upload"
+				onClick="@command('existeUsuarioLdap', username = txtUsernameLoad.value)" />
+			<button label="${labels.guardar }"
+				class="btn btn-lg btn-success" iconSclass="z-icon-check"
+				onClick="@command('almacenarUsuario', rol = cmbRolUsr.selectedItem.value)" />
+			<button label="${labels.cancelar }"
+				class="btn btn-lg btn-danger" iconSclass="z-icon-times"
+				onClick="winDtllUsr.onClose()" />
+		</div>
+	</window>
+</zk>

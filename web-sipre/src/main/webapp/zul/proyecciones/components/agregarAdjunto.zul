@@ -1,0 +1,34 @@
+<zk xmlns:n="native">
+	<window id="wndAgrAdjCNTCCO" title="${labels.agrAdjunto }"
+		closable="true">
+		<div>
+			<listbox id="lbtCuentaCCO" model="@bind(vMPry.cuentaCCOs)"
+				mold="paging" rows="7" pageSize="7" checkmark="true"
+				multiple="false">
+				<listhead sizable="true">
+					<listheader label="${labels.cuenta }" />
+					<listheader label="${labels.dsCuenta }" />
+					<listheader label="${labels.centroCosto }" />
+					<listheader label="${labels.nombreCco }" />
+				</listhead>
+				<template name="model" var="fila">
+					<listitem value="@bind(fila)">
+						<listcell label="@bind(fila.cuenta)" />
+						<listcell label="@bind(fila.dsCuenta)" />
+						<listcell label="@bind(fila.centroCosto)" />
+						<listcell label="@bind(fila.nombreCCO)" />
+					</listitem>
+				</template>
+			</listbox>
+
+			<n:h6>${labels.descripcion }</n:h6>
+			<textbox id="txbDs" rows="3" constraint="no empty"
+				focus="true" width="60%" maxlength="250"
+				placeholder="${labels.descripcion }" />
+			<div align="right">
+				<button label="${labels.siguiente }"
+					onClick="@command('agrAdjunto', cuentaCCO = lbtCuentaCCO.selectedItem.value, ds = txbDs.value ,wnd = wndAgrAdjCNTCCO)" />
+			</div>
+		</div>
+	</window>
+</zk>

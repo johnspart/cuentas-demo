@@ -1,0 +1,55 @@
+<zk xmlns:n="native">
+	<window id="wndDtllObligacion" mode="highlighted" width="500px">
+		<grid>
+			<columns>
+				<column width="100px" />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<n:label>${labels.anio }</n:label>
+					<label value="@bind(vMPry.proyeccion.anio)" />
+				</row>
+				<row>
+					<n:label>${labels.fechaInicio }</n:label>
+					<label
+						value="@bind(vMPry.proyeccion.fechaInicio) @converter('formatedDate',format='yyyy/MM/dd')" />
+				</row>
+				<row>
+					<n:label>${labels.fechaFin }</n:label>
+					<label
+						value="@bind(vMPry.proyeccion.fechaFin) @converter('formatedDate',format='yyyy/MM/dd')" />
+				</row>
+				<row>
+					<n:label>${labels.estado }</n:label>
+					<combobox id="cmbEstadoProyeccion"
+						model="@load(vMPry.estados)"
+						value="@load(vMPry.proyeccion.estadoS)" readonly="true" />
+				</row>
+				<row>
+					<n:label>${labels.total }</n:label>
+					<label
+						value="@bind(vMPry.proyeccion.total) @converter('formatedNumber', format='#,##0.##')" />
+				</row>
+			</rows>
+
+		</grid>
+
+		<separator height="20px" bar="true" visible="true" />
+
+		<div align="right">
+			<button label="${labels.guardar }"
+				class="btn btn-lg btn-success" iconSclass="z-icon-check"
+				onClick="@command('actualizarEstado', estado = cmbEstadoProyeccion.getValue())" />
+			<button label="${labels.editar }"
+				class="btn btn-lg btn-info" iconSclass="z-icon-pencil-square-o"
+				onClick="@command('explorarProyeccion', proyeccion = vMPry.proyeccion)" />
+			<button label="${labels.eliminar }"
+				class="btn btn-lg btn-warning" iconSclass="z-icon-trash-o"
+				onClick="@command('eliminarProyeccion', proyeccion = vMPry.proyeccion)" />
+			<button label="${labels.cancelar }"
+				class="btn btn-lg btn-danger" iconSclass="z-icon-times"
+				onClick="wndDtllObligacion.onClose()" />
+		</div>
+	</window>
+</zk>

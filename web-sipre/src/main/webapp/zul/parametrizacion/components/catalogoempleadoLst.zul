@@ -1,0 +1,135 @@
+<zk xmlns:n="native">
+	<listbox model="@bind(vMSAN.catalogoEmpleadoDetalles)" mold="paging"
+		autopaging="true" rows="20">
+		<frozen columns="3" />
+		<listhead sizable="true">
+			<listheader sort="auto(nit)" label="${labels.nit }"
+				hflex="min" visible="true" align="center" />
+			<listheader sort="auto(nombre)" label="${labels.nombre }"
+				hflex="min" />
+			<listheader sort="auto(cuenta)" label="${labels.cuenta }"
+				hflex="min" />
+			<listheader sort="auto(direccion)"
+				label="${labels.direccion }" width="180px" />
+			<listheader sort="auto(codigoCiudad)"
+				label="${labels.codigoCiudad }" width="135px" />
+			<listheader sort="auto(ciudad)" label="${labels.ciudad }"
+				width="100px" />
+			<listheader sort="auto(telefono1)" label="${labels.tel1 }"
+				width="100px" />
+			<listheader sort="auto(telefono2)" label="${labels.tel2 }"
+				width="100px" />
+			<listheader sort="auto(codigoCargo)"
+				label="${labels.codigoCargo }" width="135px" />
+			<listheader sort="auto(cargo)" label="${labels.cargo }"
+				 width="200px" />
+			<listheader sort="auto(fechaIngreso)"
+				label="${labels.fechaIngreso }" hflex="min" />
+			<listheader sort="auto(sueldo)" label="${labels.sueldo }"
+				hflex="min" />
+			<listheader sort="auto(sueldoAnt)"
+				label="${labels.sueldoAnt }" hflex="min" />
+			<listheader sort="auto(fechaAumento)"
+				label="${labels.fechaAumento }" hflex="min" />
+			<listheader sort="auto(anticipo)"
+				label="${labels.anticipo }" hflex="min" />
+			<listheader sort="auto(fechaAnticipo)"
+				label="${labels.fechaAnticipo }" hflex="min" />
+			<listheader sort="auto(licencia)"
+				label="${labels.licencia }" hflex="min" />
+			<listheader sort="auto(vacaciones)"
+				label="${labels.vacaciones }" hflex="min" />
+			<listheader sort="auto(gR)" label="${labels.gR }"
+				hflex="min" />
+			<listheader sort="auto(cT)" label="${labels.cT }"
+				hflex="min" />
+			<listheader sort="auto(centroCosto)"
+				label="${labels.centroCosto }" hflex="min" />
+			<listheader sort="auto(subCentro)"
+				label="${labels.subCentro }" hflex="min" />
+			<listheader sort="auto(fechaRetiro)"
+				label="${labels.fechaRetiro }" hflex="min" />
+			<listheader sort="auto(fechaNacimiento)"
+				label="${labels.fechaNacimiento }" hflex="min" />
+			<listheader sort="auto(codigoPension)"
+				label="${labels.codigoPension }" hflex="min" />
+			<listheader sort="auto(pension)" label="${labels.pension }"
+				hflex="min" />
+			<listheader sort="auto(codigoSalud)"
+				label="${labels.codigoSalud }" hflex="min" />
+			<listheader sort="auto(salud)" label="${labels.salud }"
+				hflex="min" />
+			<listheader sort="auto(codigoCesantias)"
+				label="${labels.codigoCesantias }" hflex="min" />
+			<listheader sort="auto(cesantias)"
+				label="${labels.cesantias }" hflex="min" />
+			<listheader sort="auto(antiguedad)"
+				label="${labels.antiguedad }" hflex="min" />
+			<listheader sort="auto(codigoCaja)"
+				label="${labels.codigoCaja }" hflex="min" />
+			<listheader sort="auto(caja)" label="${labels.caja }"
+				hflex="min" />
+			<listheader sort="auto(est)" label="${labels.est }"
+				hflex="min" />
+			<listheader sort="auto(tipoContrato)"
+				label="${labels.tipoContrato }" hflex="min" />
+		</listhead>
+		<template name="model" var="f">
+			<listitem value="@bind(f)">
+				<listcell label="@load(f.nit)"
+					tooltiptext="@load(f.nit)" />
+				<listcell label="@load(f.nombre)"
+					tooltiptext="@load(f.nombre)" />
+				<listcell label="@load(f.cuenta)"
+					tooltiptext="@load(f.cuenta)" />
+				<listcell label="@load(f.direccion)"
+					tooltiptext="@load(f.direccion)"/>
+				<listcell label="@load(f.codigoCiudad)"
+					tooltiptext="@load(f.codigoCiudad)" />
+				<listcell label="@load(f.ciudad)"
+					tooltiptext="@load(f.ciudad)" />
+				<listcell label="@load(f.telefono1)"
+					tooltiptext="@load(f.telefono1)" />
+				<listcell label="@load(f.telefono2)"
+					tooltiptext="@load(f.telefono2)" />
+				<listcell label="@load(f.codigoCargo)"
+					tooltiptext="@load(f.codigoCargo)" />
+				<listcell label="@load(f.cargo)"
+					tooltiptext="@load(f.cargo)" />
+				<listcell
+					label="@load(f.fechaIngreso) @converter('formatedDate',format='yyyy/MM/dd')" />
+				<listcell
+					label="@load(f.sueldo) @converter('formatedNumber', format='#,##0.##')" />
+				<listcell
+					label="@load(f.sueldoAnt) @converter('formatedNumber', format='#,##0.##')" />
+				<listcell
+					label="@load(f.fechaAumento) @converter('formatedDate',format='yyyy/MM/dd')" />
+				<listcell
+					label="@load(f.anticipo) @converter('formatedNumber', format='#,##0.##')" />
+				<listcell
+					label="@load(f.fechaAnticipo) @converter('formatedDate',format='yyyy/MM/dd')" />
+				<listcell label="@load(f.licencia)" />
+				<listcell label="@load(f.vacaciones)" />
+				<listcell label="@load(f.gR)" />
+				<listcell label="@load(f.cT)" />
+				<listcell label="@load(f.centroCosto)" />
+				<listcell label="@load(f.subCentro)" />
+				<listcell
+					label="@load(f.fechaRetiro) @converter('formatedDate',format='yyyy/MM/dd')" />
+				<listcell
+					label="@load(f.fechaNacimiento) @converter('formatedDate',format='yyyy/MM/dd')" />
+				<listcell label="@load(f.codigoPension)" />
+				<listcell label="@load(f.pension)" />
+				<listcell label="@load(f.codigoSalud)" />
+				<listcell label="@load(f.salud)" />
+				<listcell label="@load(f.codigoCesantias)" />
+				<listcell label="@load(f.cesantias)" />
+				<listcell label="@load(f.antiguedad)" />
+				<listcell label="@load(f.codigoCaja)" />
+				<listcell label="@load(f.caja)" />
+				<listcell label="@load(f.est)" />
+				<listcell label="@load(f.tipoContratoS)" />
+			</listitem>
+		</template>
+	</listbox>
+</zk>

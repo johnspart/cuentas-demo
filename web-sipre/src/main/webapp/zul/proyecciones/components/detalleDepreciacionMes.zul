@@ -1,0 +1,121 @@
+<zk xmlns:n="native">
+	<window id="wndDepreciacionDtllMes" mode="highlighted"
+		closable="true" width="70%" title="${labels.dtllDeprecMes}">
+		<grid>
+			<rows>
+				<row>
+					<n:label>${labels.codigo }</n:label>
+					<label
+						value="@load(vMDpr.depreciacionDetalle.idActivo)" />
+
+					<n:label>${labels.activo }</n:label>
+					<label
+						value="@load(vMDpr.depreciacionDetalle.activo)" />
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="40px" bar="true" visible="true" />
+
+		<n:div class="row">
+			<n:div class="col-md-2">
+				<n:div class="form-group">
+					<n:h6>${labels.ene }</n:h6>
+					<label class="form-control"
+						value="@bind(vMDpr.oblDetallePorMes.ene) @converter('formatedNumber', format='#,##0.##')" />
+				</n:div>
+			</n:div>
+			<n:div class="col-md-2">
+				<n:div class="form-group">
+					<n:h6>${labels.feb }</n:h6>
+					<label class="form-control"
+						value="@bind(vMDpr.oblDetallePorMes.feb) @converter('formatedNumber', format='#,##0.##')" />
+				</n:div>
+			</n:div>
+			<n:div class="col-md-2">
+				<n:div class="form-group">
+					<n:h6>${labels.mar }</n:h6>
+					<label class="form-control"
+						value="@bind(vMDpr.oblDetallePorMes.mar) @converter('formatedNumber', format='#,##0.##')" />
+				</n:div>
+			</n:div>
+			<n:div class="col-md-2">
+				<n:div class="form-group">
+					<n:h6>${labels.abr }</n:h6>
+					<label class="form-control"
+						value="@bind(vMDpr.oblDetallePorMes.abr) @converter('formatedNumber', format='#,##0.##')" />
+				</n:div>
+			</n:div>
+			<n:div class="col-md-2">
+				<n:div class="form-group">
+					<n:h6>${labels.may }</n:h6>
+					<label class="form-control"
+						value="@bind(vMDpr.oblDetallePorMes.may) @converter('formatedNumber', format='#,##0.##')" />
+				</n:div>
+			</n:div>
+			<n:div class="col-md-2">
+				<n:div class="form-group">
+					<n:h6>${labels.jun }</n:h6>
+					<label class="form-control"
+						value="@bind(vMDpr.oblDetallePorMes.jun) @converter('formatedNumber', format='#,##0.##')" />
+				</n:div>
+			</n:div>
+		</n:div>
+		<n:div class="row">
+			<n:div class="col-md-2">
+				<n:div class="form-group">
+					<n:h6>${labels.jul }</n:h6>
+					<label class="form-control"
+						value="@bind(vMDpr.oblDetallePorMes.jul) @converter('formatedNumber', format='#,##0.##')" />
+				</n:div>
+			</n:div>
+			<n:div class="col-md-2">
+				<n:div class="form-group">
+					<n:h6>${labels.ago }</n:h6>
+					<label class="form-control"
+						value="@bind(vMDpr.oblDetallePorMes.ago) @converter('formatedNumber', format='#,##0.##')" />
+				</n:div>
+			</n:div>
+			<n:div class="col-md-2">
+				<n:div class="form-group">
+					<n:h6>${labels.sep }</n:h6>
+					<label class="form-control"
+						value="@bind(vMDpr.oblDetallePorMes.sep) @converter('formatedNumber', format='#,##0.##')" />
+				</n:div>
+			</n:div>
+			<n:div class="col-md-2">
+				<n:div class="form-group">
+					<n:h6>${labels.oct }</n:h6>
+					<label class="form-control"
+						value="@bind(vMDpr.oblDetallePorMes.oct) @converter('formatedNumber', format='#,##0.##')" />
+				</n:div>
+			</n:div>
+			<n:div class="col-md-2">
+				<n:div class="form-group">
+					<n:h6>${labels.nov }</n:h6>
+					<label class="form-control"
+						value="@bind(vMDpr.oblDetallePorMes.nov) @converter('formatedNumber', format='#,##0.##')" />
+				</n:div>
+			</n:div>
+			<n:div class="col-md-2">
+				<n:div class="form-group">
+					<n:h6>${labels.dic }</n:h6>
+					<label class="form-control"
+						value="@bind(vMDpr.oblDetallePorMes.dic) @converter('formatedNumber', format='#,##0.##')" />
+				</n:div>
+			</n:div>
+		</n:div>
+		<n:div class="row">
+			<n:div class="col-md-4">
+				<n:div class="form-group">
+					<n:label class="control-label">
+						${labels.total }
+					</n:label>
+					<label class="form-control"
+						value="@bind(vMDpr.oblDetallePorMes.total) @converter('formatedNumber', format='#,##0.##') " />
+				</n:div>
+			</n:div>
+		</n:div>
+
+	</window>
+</zk>

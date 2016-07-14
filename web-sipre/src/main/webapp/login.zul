@@ -1,0 +1,41 @@
+<zk xmlns:h="native">
+	<window border="none" mode="highlighted" width="400px"
+		height="240px" position="center">
+		<div align="center" apply="org.zkoss.bind.BindComposer"
+			viewModel="@id('vmL') @init('co.com.tns.vm.LoginVM')">
+
+			<separator height="30px" />
+			<separator height="20px" />
+			<html style="color:red"
+				if="${not empty param.login_error}">
+
+
+				
+				<![CDATA[ ${labels.login_error_user_not_found } ]]>
+				
+				
+				
+    		</html>
+			<h:form id="f" name="f">
+
+				<hbox width="80%" align="center">
+					<textbox id="username" name="username" width="230px"
+						constraint="no empty" placeholder="${labels.usuario }"
+						style="font-size: 15px;">
+					</textbox>
+				</hbox>
+				<separator orient="vertical" height="13px" />
+				<hbox width="80%" align="center">
+					<textbox id="password" name="password" width="230px"
+						constraint="no empty" placeholder="${labels.pass }"
+						type="password" style="font-size: 15px;">
+					</textbox>
+				</hbox>
+				<separator height="20px" />
+				<button label="${labels.ingresar }"
+					onClick="@command('login', user = username.value, pass = password.value)">
+				</button>
+			</h:form>
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,42 @@
+<zk xmlns:n="native">
+	<div id="divDtllPoliticas" apply="org.zkoss.bind.BindComposer"
+		validationMessages="@id('vmsgs')"
+		viewModel="@id('vMDPYP') @init('co.com.sipre.vm.proyecciones.VMDetallePoliticas')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.dtllPoliticas}</n:h4>
+
+			<button label="${labels.agrPolitica }" class="btn btn-info"
+				iconSclass="z-icon-plus" onClick="@command('politica')" />
+		</div>
+		<div zclass="page-content" class="row">
+			<listbox id="lstDtllPoliticas"
+				onSelect="@command('politica', politica = self.selectedItem.value)"
+				model="@bind(vMDPYP.politicas)"
+				emptyMessage="${labels.noExisPoliticas}" mold="paging"
+				autopaging="true" pageSize="20" rows="20">
+				<listhead>
+					<listheader label="${labels.anio }" />
+					<listheader label="${labels.cuenta }" />
+					<listheader label="${labels.centroCosto }" />
+					<listheader label="${labels.subCentro }" />
+					<listheader label="${labels.valor } %" />
+					<listheader label="${labels.exacta }" />
+				</listhead>
+				<template name="model" var="fila">
+					<listitem value="@bind(fila)">
+						<listcell label="@load(fila.annio)" />
+						<listcell label="@load(fila.cuenta)" />
+						<listcell label="@load(fila.centroCosto)" />
+						<listcell label="@load(fila.subCentro)" />
+						<listcell
+							label="@load(fila.politica) @converter('formatedNumber', format='##,##%')" />
+						<listcell>
+							<checkbox checked="@bind(fila.exacta)" />
+						</listcell>
+					</listitem>
+				</template>
+			</listbox>
+		</div>
+	</div>
+</zk>

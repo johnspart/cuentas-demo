@@ -1,0 +1,7 @@
+<div sclass="breadcrumbs" self="@insert(content)">
+	<!-- div sclass="breadcrumb">
+		<span sclass="home-icon z-icon-home" />
+		<a label="Home" href="#" />
+		<label id="lblBread" value="Dashboard" />
+		</div -->
+</div>

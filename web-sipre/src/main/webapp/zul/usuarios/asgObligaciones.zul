@@ -1,0 +1,56 @@
+<zk>
+	<window id="winAsgOblUsrSelecc" mode="highlighted"
+		title="${labels.seleccObligac }" position="left,center" width="600px"
+		height="700px">
+		<listbox id="lsbObl" model="@bind(vMAdmAcs.obligacionesAgr)"
+			mold="paging" rows="15" autopaging="true" multiple="true"
+			checkmark="true">
+			<listhead>
+				<listheader sort="auto(cuenta)"
+					iconSclass="z-icon-filter">
+					<textbox instant="true"
+						placeholder="${labels.cuenta }" width="70%"
+						value="@bind(vMAdmAcs.oblFiltro.cuenta)"
+						onChange="@command('filtrarObligaciones')">
+					</textbox>
+				</listheader>
+				<listheader sort="auto(centroCosto)"
+					iconSclass="z-icon-filter">
+					<intbox instant="true" width="70%"
+						placeholder="${labels.centroCosto }"
+						value="@bind(vMAdmAcs.oblFiltro.centroCosto)"
+						onChange="@command('filtrarObligaciones')">
+					</intbox>
+				</listheader>
+				<listheader sort="auto(subCentro)"
+					iconSclass="z-icon-filter">
+					<intbox instant="true" width="70%"
+						placeholder="${labels.subCentro }"
+						value="@bind(vMAdmAcs.oblFiltro.subCentro)"
+						onChange="@command('filtrarObligaciones')">
+					</intbox>
+				</listheader>
+				<listheader sort="auto(usuario)"
+					iconSclass="z-icon-filter">
+					<textbox instant="true" width="70%"
+						placeholder="${labels.asignadaA }"
+						value="@bind(vMAdmAcs.oblFiltro.usuario)"
+						onChange="@command('filtrarObligaciones')" />
+				</listheader>
+			</listhead>
+			<template name="model" var="fila">
+				<listitem value="@bind(fila)">
+					<listcell label="@load(fila.cuenta)" />
+					<listcell label="@load(fila.centroCosto)" />
+					<listcell label="@load(fila.subCentro)" />
+					<listcell label="@load(fila.usuario)" />
+				</listitem>
+			</template>
+		</listbox>
+		<button label="${labels.agregar }"
+			onClick="@command('agregarObligcacion', listBox = lsbObl)"
+			iconSclass="z-icon-plus" class="btn btn-lg btn-success" />
+		<button label="${labels.cerrar }" iconSclass="z-icon-sign-out"
+			class="btn btn-lg btn-danger" onClick="winAsgOblUsrSelecc.onClose()" />
+	</window>
+</zk>

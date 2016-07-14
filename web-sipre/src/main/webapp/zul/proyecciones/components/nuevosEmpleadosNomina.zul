@@ -1,0 +1,159 @@
+<zk xmlns:n="native" xmlns:w='client'>
+	<window id="wndPryEmpleado" mode="highlighted"
+		title="${labels.proyectarNvEmpleados }" closable="true"
+		width="900px">
+
+		<listbox id="lsbEmplPrys" model="@bind(vMNmn.empleados)"
+			w:onSelect="jq(this.$f('t')).slideDown(1000)"
+			onSelect="@command('selecEmpleado', emp  = self.selectedItem.value)"
+			mold="paging" autopaging="true" rows="5" pageSize="5">
+			<listhead sizable="true">
+				<listheader label="${labels.descripcion }" />
+				<listheader label="${labels.fechaIngreso }" hflex="min" />
+				<listheader label="${labels.fechaRetiro }" hflex="min" />
+				<listheader label="${labels.sueldo }" hflex="min" />
+				<listheader label="${labels.estado }" hflex="min" />
+			</listhead>
+			<template name="model" var="fila">
+				<listitem value="@bind(fila)">
+					<listcell label="@load(fila.descripcion) " />
+					<listcell
+						label="@load(fila.fechaIngreso) @converter('formatedDate',format='yyyy/MM/dd')" />
+					<listcell
+						label="@load(fila.fechaRetiro) @converter('formatedDate',format='yyyy/MM/dd')" />
+					<listcell
+						label="@load(fila.sueldo) @converter('formatedNumber', format='#,##0.##')" />
+					<listcell label="@load(fila.estadoS)" />
+				</listitem>
+			</template>
+		</listbox>
+
+		<separator height="40px" bar="true" visible="true" />
+
+		<grid>
+			<rows>
+				<row>
+					<n:label>${labels.cuenta }</n:label>
+					<label value="@load(vMNmn.obligacion.cuenta)" />
+					<n:label>${labels.descripcion }</n:label>
+					<label value="@load(vMNmn.obligacion.descripcion)" />
+				</row>
+				<row>
+					<n:label>${labels.centroCosto }</n:label>
+					<label value="@load(vMNmn.obligacion.centroCosto)" />
+					<n:label>${labels.subCentro }</n:label>
+					<label value="@load(vMNmn.obligacion.subCentro)" />
+				</row>
+			</rows>
+		</grid>
+
+
+		<separator bar="true" height="20px" visible="true" />
+
+		<div id="t">
+			<n:div class="row">
+				<n:div class="col-md-3">
+					<n:h5>${labels.fechaIngreso }</n:h5>
+				</n:div>
+				<n:div class="col-md-3">
+					<n:h5>${labels.fechaRetiro }</n:h5>
+				</n:div>
+				<n:div class="col-md-6">
+					<n:h5>${labels.descripcion }</n:h5>
+				</n:div>
+			</n:div>
+
+			<n:div class="row">
+				<n:div class="col-md-3">
+					<label width="200px"
+						value="@bind(vMNmn.empleado.fechaIngreso) @converter('formatedDate',format='yyyy/MM/dd')"
+						sclass="input-control text" />
+				</n:div>
+				<n:div class="col-md-3">
+					<label width="200px"
+						value="@bind(vMNmn.empleado.fechaRetiro) @converter('formatedDate',format='yyyy/MM/dd')"
+						sclass="input-control text" />
+				</n:div>
+				<n:div class="col-md-6">
+					<label width="400px"
+						value="@bind(vMNmn.empleado.descripcion)"
+						sclass="input-control text" />
+				</n:div>
+			</n:div>
+
+			<separator bar="true" height="10px" visible="true" />
+
+			<n:div class="row">
+				<n:div class="col-md-3">
+					<n:h5>${labels.sueldo }</n:h5>
+				</n:div>
+				<n:div class="col-md-3">
+					<n:h5>${labels.dotacionMes }</n:h5>
+				</n:div>
+				<n:div class="col-md-2">
+					<n:h5>${labels.promedioComisiones }</n:h5>
+				</n:div>
+				<n:div class="col-md-4">
+					<n:h5>${labels.promRecgHorExtMes}</n:h5>
+				</n:div>
+			</n:div>
+
+			<n:div class="row">
+				<n:div class="col-md-3">
+					<label width="200px"
+						value="@bind(vMNmn.empleado.salario)  @converter('formatedNumber', format='#,##0.##')"
+						sclass="input-control text" />
+				</n:div>
+				<n:div class="col-md-3">
+					<label width="200px"
+						value="@bind(vMNmn.empleado.dotacionMensual) @converter('formatedNumber', format='#,##0.##')"
+						sclass="input-control text" />
+				</n:div>
+				<n:div class="col-md-2">
+					<label width="120px"
+						value="@bind(vMNmn.empleado.comision)  @converter('formatedNumber', format='#,##0.##')"
+						sclass="input-control text" />
+				</n:div>
+				<n:div class="col-md-4">
+					<label width="250px"
+						value="@bind(vMNmn.empleado.promRecHorExtrMes) @converter('formatedNumber', format='#,##0.##')"
+						sclass="input-control text" />
+				</n:div>
+			</n:div>
+
+			<separator height="40px" bar="true" visible="true" />
+
+			<div align="left">
+
+				<combobox id="cmbEstado"
+					value="@bind(vMNmn.empleado.estadoPryEmpleadoS)"
+					model="@load(vMNmn.estadoPryEmpleado)" sclass="input-control text" />
+
+				<combobox id="cmbFSalud"
+					value="@bind(vMNmn.empleado.fondoSalud.fondoSalud)"
+					selectedItem="@bind(vMNmn.empleado.fondoSalud)" readonly="true"
+					model="@load(vMNmn.fondoSaluds)">
+					<template name="model">
+						<comboitem label="@load(each.fondoSalud)"
+							value="@bind(each)" />
+					</template>
+				</combobox>
+
+				<combobox id="cmbFPension"
+					value="@bind(vMNmn.empleado.fondoPension.fondoPension)"
+					selectedItem="@bind(vMNmn.empleado.fondoPension)" readonly="true"
+					model="@load(vMNmn.fondoPensions)">
+					<template name="model">
+						<comboitem label="@load(each.fondoPension)"
+							value="@bind(each)" />
+					</template>
+				</combobox>
+
+				<button label="${labels.cambiarEstado }"
+					onClick="@command('actualizarEstado', estado = cmbEstado.value)"
+					iconSclass="z-icon-floppy-o"
+					w:onCreate="jq(this.$f('t')).slideToggle(1)" />
+			</div>
+		</div>
+	</window>
+</zk>

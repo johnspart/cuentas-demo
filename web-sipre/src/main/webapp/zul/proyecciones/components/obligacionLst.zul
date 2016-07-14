@@ -1,0 +1,66 @@
+<zk xmlns:n="native">
+	<listbox model="@bind(vMPry.obligaciones)" mold="paging"
+		id="lsbObligaciones" checkmark="@load(vMPry.selected)"
+		emptyMessage="${labels.noOblAsignadas }"
+		onSelect="@command('detalleObligacion', obligacion = self.selectedItem.value,  component = divObligaciones, listbox = self)"
+		autopaging="true" rows="20" pageSize="20">
+		<listhead sizable="true">
+			<listheader sort="auto(cuenta)" iconSclass="z-icon-filter"
+				width="100px">
+				<textbox instant="true" placeholder="${labels.cuenta }"
+					width="100px" value="@bind(vMPry.oblFiltro.cuenta)"
+					onChange="@global-command('filtrarObligaciones')">
+				</textbox>
+			</listheader>
+			<listheader iconSclass="z-icon-filter"
+				sort="auto(descripcion)">
+				<textbox instant="true" width="70%"
+					placeholder="${labels.descripcion }"
+					value="@bind(vMPry.oblFiltro.descripcion)"
+					onChange="@global-command('filtrarObligaciones')">
+				</textbox>
+			</listheader>
+			<listheader sort="auto(centroCosto)" hflex="min"
+				iconSclass="z-icon-filter">
+				<intbox instant="true" width="70%"
+					placeholder="${labels.centroCosto }"
+					value="@bind(vMPry.oblFiltro.centroCosto)"
+					onChange="@global-command('filtrarObligaciones')">
+				</intbox>
+			</listheader>
+			<listheader sort="auto(dsCentroCosto)"
+				label="${labels.centroCosto }">
+			</listheader>
+			<listheader sort="auto(subCentro)" hflex="min"
+				iconSclass="z-icon-filter">
+				<intbox instant="true" width="70%"
+					placeholder="${labels.subCentro }"
+					value="@bind(vMPry.oblFiltro.subCentro)"
+					onChange="@global-command('filtrarObligaciones')">
+				</intbox>
+			</listheader>
+			<listheader sort="auto(dsSubCentro)"
+				label="${labels.subCentro }">
+			</listheader>
+			<listheader sort="auto(total)" iconSclass="z-icon-filter"
+				hflex="min">
+				<decimalbox instant="true" width="70%"
+					placeholder="${labels.total }" value="@bind(vMPry.oblFiltro.total)"
+					onChange="@global-command('filtrarObligaciones')">
+				</decimalbox>
+			</listheader>
+		</listhead>
+		<template name="model" var="fila">
+			<listitem value="@bind(fila)">
+				<listcell label="@load(fila.cuenta)" />
+				<listcell label="@load(fila.descripcion)" />
+				<listcell label="@load(fila.centroCosto)" />
+				<listcell label="@load(fila.dsCentroCosto)" />
+				<listcell label="@load(fila.subCentro)" />
+				<listcell label="@load(fila.dsSubCentro)" />
+				<listcell
+					label="@load(fila.total) @converter('formatedNumber', format='#,##0.##')" />
+			</listitem>
+		</template>
+	</listbox>
+</zk>

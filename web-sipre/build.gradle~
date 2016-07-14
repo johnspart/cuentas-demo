@@ -1,0 +1,63 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'jacoco'
+
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+version = '1.0'
+
+
+eclipse{
+ 	wtp{
+  		facet{
+  			facet name: 'jst.web', version: '3.1'
+  		}
+ 	}
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+	compile project(':servicios-sipre')
+	compile 'org.springframework:spring-tx:4.2.5.RELEASE'
+	compile 'org.springframework:spring-orm:4.2.5.RELEASE'
+	compile 'org.springframework:spring-context:4.2.5.RELEASE'
+	
+	compile project(':orm-sipre')
+	compile 'org.hibernate:hibernate-core:4.3.11.Final'
+	compile 'org.hibernate:hibernate-entitymanager:4.3.11.Final'
+	
+	compile project(':utils-sipre')
+	compile 'org.springframework.security:spring-security-web:4.0.4.RELEASE'
+	compile 'org.springframework.security:spring-security-config:4.0.4.RELEASE'
+	compile 'org.springframework.security:spring-security-ldap:4.0.4.RELEASE'
+	compile 'org.slf4j:slf4j-log4j12:1.7.19'
+	compile 'org.slf4j:slf4j-api:1.7.19'
+	compile 'org.apache.poi:poi:3.14'
+	compile 'org.apache.poi:poi-ooxml:3.14'
+	
+	compile 'org.zkoss.zk:zkbind:7.0.3'
+	compile 'org.zkoss.zk:zul:7.0.3'
+	compile 'org.zkoss.zk:zkplus:7.0.3'
+	compile 'org.zkoss.zk:zhtml:7.0.3'
+	compile 'commons-io:commons-io:2.4'
+	compile 'org.springframework:spring-web:4.2.5.RELEASE'
+	compile 'org.springframework:spring-webmvc:4.2.5.RELEASE'
+	
+	compile 'org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec:1.0.0.Final'
+	
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+test {
+    systemProperties 'property': 'value'
+}
+

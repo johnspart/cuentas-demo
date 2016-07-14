@@ -1,0 +1,41 @@
+<zk xmlns:n="native">
+	<div id="divAdmProyeccion" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMDpr') @init('co.com.sipre.vm.proyecciones.VMDepreciaciones')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.depreciaciones}</n:h4>
+			<button label="${labels.gnrDepre }" class="btn btn-info"
+				iconSclass="z-icon-download"
+				onClick="@command('winSeleccAnioDepre')" />
+		</div>
+		<div zclass="page-content" class="row">
+
+			<listbox id="lstDepreciaciones"
+				onSelect="@command('depreciacionDetalle', depreciacion = self.selectedItem.value)"
+				model="@bind(vMDpr.depreciaciones)"
+				emptyMessage="${labels.noExisProyecciones}" mold="paging"
+				autopaging="true" pageSize="10" rows="10">
+				<listhead>
+					<listheader label="${labels.anio }" />
+					<listheader label="${labels.fechaInicio }" />
+					<listheader label="${labels.fechaFin }" />
+					<listheader label="${labels.estado }" />
+					<listheader label="${labels.total }" />
+				</listhead>
+				<template name="model" var="fila">
+					<listitem value="@bind(fila)">
+						<listcell label="@load(fila.anio)" />
+						<listcell
+							label="@load(fila.fechaInicio) @converter('formatedDate',format='yyyy/MM/dd')" />
+						<listcell
+							label="@load(fila.fechaFin) @converter('formatedDate',format='yyyy/MM/dd')" />
+						<listcell label="@load(fila.estadoS)" />
+						<listcell
+							label="@load(fila.total) @converter('formatedNumber', format='#,##0.##')" />
+					</listitem>
+				</template>
+			</listbox>
+
+		</div>
+	</div>
+</zk>

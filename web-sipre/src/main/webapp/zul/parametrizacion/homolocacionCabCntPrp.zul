@@ -1,0 +1,36 @@
+<zk xmlns:n="native">
+	<div id="divHmcCbcCntPrp" apply="org.zkoss.bind.BindComposer"
+		validationMessages="@id('vmsgs')"
+		viewModel="@id('vMHCCD') @init('co.com.sipre.vm.parametrizacion.VMHmgCbcCntDst')">
+
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.hmcCbcCntPrp}</n:h4>
+
+			<button label="${labels.nuevo }"
+				onClick="@command('selectHCCD')" iconSclass="z-icon-plus"
+				class="btn btn-info" />
+		</div>
+
+		<div zclass="page-content" class="row">
+			<listbox model="@bind(vMHCCD.hmcCabCntDsts)" mold="paging"
+				autopaging="true" rows="20" pageSize="20"
+				onSelect="@command('selectHCCD', hccd = self.selectedItem.value)">
+				<listhead>
+					<listheader label="${labels.descripcion }" />
+					<listheader label="${labels.cuenta51 }" />
+					<listheader label="${labels.cuenta52 }" />
+					<listheader label="${labels.cuenta72 }" />
+				</listhead>
+				<template name="model" var="fila">
+					<listitem value="@bind(fila)">
+						<listcell
+							label="@load(fila.distribucionNomina)" />
+						<listcell label="@load(fila.cuenta51)" />
+						<listcell label="@load(fila.cuenta52)" />
+						<listcell label="@load(fila.cuenta72)" />
+					</listitem>
+				</template>
+			</listbox>
+		</div>
+	</div>
+</zk>

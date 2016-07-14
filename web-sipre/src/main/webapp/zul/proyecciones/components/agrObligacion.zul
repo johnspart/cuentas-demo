@@ -1,0 +1,70 @@
+<zk xmlns:n="native">
+	<window title="${labels.agregarObl }" mode="highlighted"
+		closable="true" id="winAgrObligacion"
+		form="@id('frmAgrObl') @load(vMPry.agregarObligacion) @save(vMPry.agregarObligacion, before='agregarObligacion') @validator('co.com.sipre.validators.ValidatorAgregarObligacion')">
+
+		<hlayout valign="middle">
+			<n:h6>${labels.cuenta }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['cuenta'])" />
+		</hlayout>
+		<textbox id="cuenta" value="@bind(frmAgrObl.cuenta)"
+			maxlength="50" constraint="no empty" placeholder="${labels.cuenta }"
+			type="text" sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.dsCuenta }</n:h6>
+			<label sclass="fg-red"
+				value="@bind(vmsgs['descripcionCuenta'])" />
+		</hlayout>
+		<textbox id="descripcionCuenta"
+			value="@bind(frmAgrObl.descripcionCuenta)" maxlength="250"
+			constraint="no empty" placeholder="${labels.dsCuenta }" type="text"
+			sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.centroCosto }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['centroCosto'])" />
+		</hlayout>
+		<intbox id="centroCosto" value="@bind(frmAgrObl.centroCosto)"
+			maxlength="11" constraint="no empty"
+			placeholder="${labels.centroCosto }" sclass="input-control text" />
+
+
+		<hlayout valign="middle">
+			<n:h6>${labels.nombreCco }</n:h6>
+			<label sclass="fg-red"
+				value="@bind(vmsgs['descripcionCentroCosto'])" />
+		</hlayout>
+		<textbox id="descripcionCentroCosto"
+			value="@bind(frmAgrObl.descripcionCentroCosto)" maxlength="50"
+			constraint="no empty" placeholder="${labels.nombreCco }" type="text"
+			sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.subCentro }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['subCentro'])" />
+		</hlayout>
+		<intbox id="subCentro" value="@bind(frmAgrObl.subCentro)"
+			maxlength="11" constraint="no empty"
+			placeholder="${labels.subCentro }" sclass="input-control text" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.nombreSubCco }</n:h6>
+			<label sclass="fg-red"
+				value="@bind(vmsgs['descripcionSubCentro'])" />
+		</hlayout>
+		<textbox id="descripcionSubCentro"
+			value="@bind(frmAgrObl.descripcionSubCentro)" maxlength="50"
+			constraint="no empty" placeholder="${labels.nombreSubCco }"
+			type="text" sclass="input-control text" />
+
+		<div align="right">
+			<button iconSclass="z-icon-check"
+				class="btn btn-lg btn-success" tooltiptext="${labels.finalizar }"
+				onClick="@command('agregarObligacion')" />
+			<button iconSclass="z-icon-times"
+				class="btn btn-lg btn-danger" tooltiptext="${labels.cancelar }"
+				onClick="winAgrObligacion.onClose()" />
+		</div>
+	</window>
+</zk>

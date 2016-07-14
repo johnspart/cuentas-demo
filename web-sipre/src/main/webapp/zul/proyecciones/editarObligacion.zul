@@ -1,0 +1,69 @@
+<zk xmlns:n="native">
+	<window id="winOblDetalle" apply="org.zkoss.bind.BindComposer"
+		zclass="page-content"
+		viewModel="@id('vMObl') @init('co.com.sipre.vm.proyecciones.VMObligacion')"
+		width="70%">
+
+		<grid>
+			<rows>
+				<row>
+					<n:label>${labels.cuenta }</n:label>
+					<label value="@load(vMObl.obligacion.cuenta)" />
+					<n:label>${labels.descripcion }</n:label>
+					<label value="@load(vMObl.obligacion.descripcion)" />
+				</row>
+				<row>
+					<n:label>${labels.centroCosto }</n:label>
+					<label value="@load(vMObl.obligacion.centroCosto)" />
+					<n:label>${labels.subCentro }</n:label>
+					<label value="@load(vMObl.obligacion.subCentro)" />
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="40px" bar="true" visible="true" />
+		<hlayout if="${vMObl.editVal == 'true'}">
+			<decimalbox id="dcbDivValor"
+				tooltiptext="${labels.ingreseValor }" />
+			<button label="${labels.divValorAnual }"
+				class="btn btn-info"
+				onClick="@command('divValorAnual', decimalBox = dcbDivValor)" />
+			<a iconSclass="z-icon-question-circle" popup="msgHlp" />
+			<popup id="msgHlp">
+				<label value="${labels.ingresoValorAnual }"
+					style="color: black;" />
+			</popup>
+		</hlayout>
+
+		<include if="${vMObl.editVal == 'true'}"
+			src="/zul/proyecciones/components/obligacionDetalleMeses.zul" />
+
+		<button label="${labels.vlrReales }" popup="pppValoresReales"></button>
+
+		<vlayout>
+			<label value="${labels.observaciones }" />
+			<textbox rows="3" multiline="true" width="60%"
+				value="@bind(vMObl.obligacion.observacion)">
+			</textbox>
+		</vlayout>
+
+		<div align="right">
+			<button label="${labels.proyectarNvEmpleados }"
+				visible="@load(vMObl.visibleEmpleados)" iconSclass="z-icon-users"
+				onClick="@command('proyectarEmpleados')" />
+
+			<separator orient="vertical" width="40px" bar="true"
+				visible="true" />
+
+			<button iconSclass="z-icon-check"
+				class="btn btn-lg btn-success" label="${labels.finalizar }"
+				onClick="@command('almcenarObligacionDetalle', winOblDetalle = winOblDetalle) @global-command('filtrarObligaciones')" />
+			<button iconSclass="z-icon-times"
+				class="btn btn-lg btn-danger" label="${labels.cancelar }"
+				onClick="@command('salirObligacionDetalle', winOblDetalle = winOblDetalle)" />
+		</div>
+
+		<include
+			src="/zul/proyecciones/components/valoresRealesPorMesPopup.zul" />
+	</window>
+</zk>

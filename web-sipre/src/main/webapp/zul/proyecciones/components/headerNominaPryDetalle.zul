@@ -1,0 +1,73 @@
+<zk xmlns:n="native">
+	<grid>
+		<columns>
+			<column hflex="min" />
+			<column />
+			<column hflex="min" />
+			<column />
+		</columns>
+
+		<rows>
+			<row>
+				<n:label>${labels.numDocumento }:</n:label>
+				<n:label>
+					${vMNmn.nominaEmpleado.numeroDocumento}
+				</n:label>
+
+				<n:label>${labels.nombre }:</n:label>
+				<n:label>${vMNmn.nominaEmpleado.nombre}</n:label>
+			</row>
+			<row>
+				<n:label>${labels.cargo }:</n:label>
+				<n:label>${vMNmn.nominaEmpleado.cargo}</n:label>
+
+				<n:label>${labels.fechaIngreso }:</n:label>
+				<n:label>${vMNmn.nominaEmpleado.fechaIngreso}</n:label>
+			</row>
+			<row>
+				<n:label>${labels.centroCosto }:</n:label>
+				<n:label>
+					${vMNmn.nominaEmpleado.nominaEmpleadoDetalle.centroCosto}
+				</n:label>
+
+				<n:label>${labels.nombreCco }:</n:label>
+				<n:label>
+					${vMNmn.nominaEmpleado.nominaEmpleadoDetalle.dsCentroCosto}
+				</n:label>
+			</row>
+			<row>
+				<n:label>${labels.subCentro }:</n:label>
+				<n:label>
+					${vMNmn.nominaEmpleado.nominaEmpleadoDetalle.subCentro}
+				</n:label>
+
+				<n:label>${labels.nombreSubCco }:</n:label>
+				<n:label>
+					${vMNmn.nominaEmpleado.nominaEmpleadoDetalle.dsSubCentro}
+				</n:label>
+			</row>
+			<row>
+				<n:label>${labels.salud }:</n:label>
+				<n:label>
+					${vMNmn.nominaEmpleado.nominaEmpleadoDetalle.fondoSalud}
+				</n:label>
+
+				<n:label>${labels.pension }:</n:label>
+				<n:label>
+					${vMNmn.nominaEmpleado.nominaEmpleadoDetalle.fondoPension}
+				</n:label>
+			</row>
+			<row>
+
+				<n:label>${labels.tipoContrato }:</n:label>
+				<n:label>
+					${vMNmn.nominaEmpleado.nominaEmpleadoDetalle.tipoContrato}
+				</n:label>
+
+				<n:label></n:label>
+				<n:label></n:label>
+
+			</row>
+		</rows>
+	</grid>
+</zk>

@@ -1,0 +1,20 @@
+<zk xmlns:n="native">
+	<window id="wndNvDepre" mode="highlighted" closable="true"
+		title="${labels.selecAnnio }">
+		<n:h6>${labels.anio }</n:h6>
+		<combobox id="cmbAnnio" model="@load(vMDpr.aniosAvalibles)"
+			constraint="no empty" placeholder="${labels.anio }" readonly="true"
+			sclass="input-control" />
+
+		<separator height="10px" bar="true" visible="true" />
+
+		<div align="right">
+			<button iconSclass="z-icon-check"
+				class="btn btn-lg btn-success" tooltiptext="${labels.finalizar }"
+				onClick="@command('generarDepreciacion', annio = cmbAnnio.value)" />
+			<button iconSclass="z-icon-times"
+				class="btn btn-lg btn-danger" tooltiptext="${labels.cancelar }"
+				onClick="wndNvDepre.onClose()" />
+		</div>
+	</window>
+</zk>

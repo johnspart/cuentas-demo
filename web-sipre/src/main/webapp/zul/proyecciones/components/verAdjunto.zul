@@ -1,0 +1,17 @@
+<zk xmlns:n="native">
+	<window closable="true">
+		<vlayout>
+			<n:h6>${labels.cuenta }</n:h6>
+			<label value="@load(vMPry.cuentaCCO.dsCNT)" />
+
+			<n:h6>${labels.centroCosto }</n:h6>
+			<label value="@load(vMPry.cuentaCCO.dsCCO)" />
+		</vlayout>
+		<button label="${labels.descargar }"
+			onClick="@command('descargarAdjunto')"
+			iconSclass="z-icon-cloud-download" class="btn btn-success" />
+		<button label="${labels.eliminar }"
+			onClick="@command('eliminarAdjunto', wnd = self.parent)"
+			iconSclass="z-icon-trash-o" class="btn btn-warning" />
+	</window>
+</zk>

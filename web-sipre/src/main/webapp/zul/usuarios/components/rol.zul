@@ -1,0 +1,27 @@
+<zk xmlns:n="native">
+	<window id="wndRol" title="${labels.rol }"
+		form="@id('frm') @load(vMAdmRol.rol) @save(vMAdmRol.rol, before='almacenarRol') @validator('co.com.sipre.validators.ValidatorRol')">
+
+		<n:h6>${labels.nombre }</n:h6>
+		<label sclass="fg-red" value="@bind(vmsgs['rol'])" />
+		<textbox id="rol" maxlength="100" constraint="no empty"
+			value="@bind(frm.rol)" placeholder="${labels.nombre }" />
+
+		<n:h6>${labels.descripcion }</n:h6>
+		<label sclass="fg-red" value="@bind(vmsgs['rol'])" />
+		<textbox id="descripcion" maxlength="500" multiline="true"
+			rows="4" constraint="no empty" value="@bind(frm.descripcion)"
+			placeholder="${labels.descripcion }" />
+
+		<separator bar="true" visible="true" height="20px" />
+
+		<div align="right">
+			<button label="${labels.guardar }"
+				class="btn btn-lg btn-success" iconSclass="z-icon-check"
+				onClick="@command('almacenarRol', wnd = wndRol)" />
+			<button label="${labels.cancelar }"
+				class="btn btn-lg btn-danger" iconSclass="z-icon-times"
+				onClick="wndRol.onClose()" />
+		</div>
+	</window>
+</zk>

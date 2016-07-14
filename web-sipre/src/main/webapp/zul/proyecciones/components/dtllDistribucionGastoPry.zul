@@ -1,0 +1,37 @@
+<zk xmlns:n="native">
+	<window id="windDtllGastDistribuido" mode="highlighted" width="70%"
+		form="@id('frmDtllGastDistr') @load(vMDbgLst.distrGastosPry)"
+		title="${labels.dtllDistrGasto }">
+		<grid>
+			<rows>
+				<row>
+					<n:label>${labels.centroCosto }</n:label>
+					<label
+						value="@load(vMDbgLst.distrGastosPry.centroCosto)" />
+					<n:label>${labels.subCentro }</n:label>
+					<label
+						value="@load(vMDbgLst.distrGastosPry.subCentro)" />
+				</row>
+				<row>
+					<n:label>${labels.cuenta }</n:label>
+					<label
+						value="@load(vMDbgLst.distrGastosPry.cuenta)" />
+					<n:label>${labels.descripcion }</n:label>
+					<label
+						value="@load(vMDbgLst.distrGastosPry.dsDistribucionGasto)" />
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="40px" bar="true" visible="true" />
+
+		<include
+			src="/zul/proyecciones/components/dtllDistrGastosMeses.zul" />
+
+		<div align="right">
+			<button iconSclass="z-icon-times"
+				class="btn btn-lg btn-danger" tooltiptext="${labels.cancelar }"
+				onClick="windDtllGastDistribuido.onClose()" />
+		</div>
+	</window>
+</zk>

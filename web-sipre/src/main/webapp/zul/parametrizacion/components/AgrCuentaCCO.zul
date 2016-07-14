@@ -1,0 +1,31 @@
+<zk xmlns:n="native">
+	<window id="wndAgrCntCco" mode="highlighted" width="250px"
+		height="250px"
+		form="@id('frmNvGrAcDll') @load(vMGrActivo.nvGrADetalle) @save(vMGrActivo.nvGrADetalle, before='agrCuentaCCO') @validator('co.com.sipre.validators.ValidatorAgrGrupoActivoDetalle')">
+
+		<hlayout valign="middle">
+			<n:h6>${labels.cuenta }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['cuenta'])" />
+		</hlayout>
+		<textbox id="cuenta" value="@bind(frmNvGrAcDll.cuenta)"
+			maxlength="50" sclass="input-control text" constraint="no empty" />
+
+		<hlayout valign="middle">
+			<n:h6>${labels.centroCosto }</n:h6>
+			<label sclass="fg-red" value="@bind(vmsgs['centroCosto'])" />
+		</hlayout>
+		<intbox id="centroCosto" value="@bind(frmNvGrAcDll.centroCosto)"
+			maxlength="10" sclass="input-control text" constraint="no empty" />
+
+		<separator visible="true" height="20px" bar="true" />
+
+		<div align="right">
+			<button label="${labels.agregar }"
+				onClick="@command('agrCuentaCCO')" iconSclass="z-icon-plus"
+				class="btn btn-lg btn-success" />
+			<button label="${labels.cerrar }"
+				iconSclass="z-icon-sign-out" class="btn btn-lg btn-danger"
+				onClick="wndAgrCntCco.onClose()" />
+		</div>
+	</window>
+</zk>

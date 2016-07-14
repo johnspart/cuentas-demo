@@ -1,0 +1,38 @@
+<zk xmlns:n="native">
+	<window id="wndPerfil" apply="org.zkoss.bind.BindComposer"
+		mode="highlighted" width="400px" title="${labels.perfilUs }"
+		viewModel="@id('vMPerfil') @init('co.com.sipre.vm.parametrizacion.VMPerfilUsuario')"
+		validationMessages="@id('vmsgs')">
+		<grid>
+			<columns>
+				<column width="100px" />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<n:label>${labels.usuario }</n:label>
+					<label value="@bind(vMPerfil.usuarioRol.username)" />
+				</row>
+				<row>
+					<n:label>${labels.nombre }</n:label>
+					<label value="@bind(vMPerfil.usuarioRol.nombre)" />
+				</row>
+				<row>
+					<n:label>${labels.email }</n:label>
+					<label value="@bind(vMPerfil.usuarioRol.email)" />
+				</row>
+				<row>
+					<n:label>${labels.rol }</n:label>
+					<label value="@bind(vMPerfil.usuarioRol.rol.rol)" />
+				</row>
+			</rows>
+		</grid>
+
+		<separator height="20px" bar="true" visible="true" />
+
+		<div align="right">
+			<button class="btn btn-lg btn-danger"
+				iconSclass="z-icon-times" onClick="wndPerfil.onClose()" />
+		</div>
+	</window>
+</zk>

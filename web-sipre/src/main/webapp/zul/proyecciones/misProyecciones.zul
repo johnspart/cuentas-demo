@@ -1,0 +1,12 @@
+<zk xmlns:n="native">
+	<div id="divAdmProyeccion" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vMPry') @init('co.com.sipre.vm.proyecciones.VMMisProyecciones')">
+		<div align="right" sclass="breadcrumbs">
+			<n:h4 class="ttl">${labels.misObligaciones}</n:h4>
+		</div>
+		<div zclass="page-content" class="row">
+			<include
+				src="/zul/proyecciones/components/proyeccionLst.zul" />
+		</div>
+	</div>
+</zk>
