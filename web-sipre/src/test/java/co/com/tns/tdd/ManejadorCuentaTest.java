@@ -1,4 +1,4 @@
-package co.com.tns.bs.cuenta.test;
+package co.com.tns.tdd;
 
 import java.util.Date;
 

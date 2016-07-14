@@ -1,5 +1,8 @@
 package co.com.tns.vm;
 
-public class IndexVM {
+import co.com.tns.bs.cuenta.Cliente;
 
+public class IndexVM {
+	private Cliente cliente;
+	
 }

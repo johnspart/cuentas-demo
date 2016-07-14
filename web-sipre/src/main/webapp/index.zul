@@ -5,6 +5,18 @@
 
 <?link rel="stylesheet" href="/less/index.css.dsp" ?>
 <zk xmlns:n="native">
-
-	
+	<window>
+		<grid>
+			<columns>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<label value="Cuenta #"/>
+					<label value="@load()"/>
+				</row>
+			</rows>
+		</grid>	
+	</window>
 </zk>
