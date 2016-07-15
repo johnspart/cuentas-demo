@@ -61,5 +61,5 @@ task jettyDaemon(type: org.gradle.api.plugins.jetty.JettyRun) {
 
 task atdd(type: Test, dependsOn: jettyDaemon) {
     testClassesDir = sourceSets.atdd.output.classesDir
-    classpath = sourceSets.selenium.runtimeClasspath
+    classpath = sourceSets.atdd.runtimeClasspath
 }
