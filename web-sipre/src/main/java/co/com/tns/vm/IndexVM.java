@@ -15,8 +15,8 @@ public class IndexVM {
 
 	@Init
 	public void init(@ExecutionArgParam("cliente") Cliente cliente) {
-		this.cliente = new Cliente();
-		this.cuenta = new Cuenta();
+		this.cliente = cliente;
+		this.cuenta = cliente.getCuenta();
 		this.transFerenciaExitosa = false;
 	}
 
