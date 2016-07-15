@@ -36,7 +36,7 @@ public class ManejadorCuentaTest {
 	}
 
 	@Test
-	public void transferirSaldoTest() {
+	public void transferirSaldoTest() throws Exception {
 		double saldoVerificar = 8000.0;
 		double saldoVerificarNuevoCliente = 4000.0;
 		manejadorCuentas.transferir(clienteOrigen, clienteDestino, 2000);
@@ -48,11 +48,11 @@ public class ManejadorCuentaTest {
 		Assert.assertTrue("El saldo del nuevo cliente nocoincide", saldoVerificarNuevoCliente == saldoNuevoCliente);
 	}
 
-	@Test
-	public void saldoInsuficienteTest() {
+	@Test	
+	public void saldoInsuficienteTest() throws Exception {
 		double saldoVerificar = 2000;
 		// Arrange
-		clienteOrigen.getCuenta().setSaldo(2000);
+		clienteOrigen.getCuenta().setSaldo(2000D);
 		// Act
 		manejadorCuentas.transferir(clienteOrigen, clienteDestino, 10000);
 		double saldo = manejadorCuentas.consultarSaldo(clienteOrigen);

@@ -5,18 +5,21 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.zk.ui.Executions;
 
 import co.com.tns.bs.cuenta.Cliente;
-import co.com.tns.bs.cuenta.Cuenta;
+import co.com.tns.bs.cuenta.Usuarios;
 
 public class LoginVM {
+
 	@Command("login")
-	public void login(@BindingParam("user") String user, @BindingParam("pass") String pass) {
+	public void login(@BindingParam("user") String user,
+			@BindingParam("pass") String pass) {
 		if (!user.equals(pass))
 			return;
-		Cliente cliente = new Cliente();
-		Cuenta cuenta = new Cuenta();
-		cuenta.setSaldo(1000);
-		cuenta.setFecha("2015-12-5");
-		cliente.setCuenta(cuenta);
+
+		Cliente cliente;
+		if (Usuarios.getInstance().getUsuarios().containsKey(user))
+			cliente = Usuarios.getInstance().getUsuarios().get(user);
+		else
+			return;
 		Executions.getCurrent().getSession().setAttribute("cliente", cliente);
 		Executions.sendRedirect("/index.zul");
 	}

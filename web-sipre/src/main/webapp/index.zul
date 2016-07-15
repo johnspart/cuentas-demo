@@ -7,7 +7,7 @@
 <zk xmlns:n="native">
 	<window apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vmI') @init('co.com.tns.vm.IndexVM')" border="none"
-		mode="highlighted" width="400px" height="310px" position="center">
+		mode="highlighted" width="400px" height="360px" position="center">
 		<grid>
 			<columns>
 				<column width="100px" />
@@ -16,12 +16,12 @@
 			<rows>
 				<row>
 					<label value="Cuenta #" />
-					<n:label id="miCuenta"
-						value="@load(vmI.cliente.cuenta)" />
+					<label id="miCuenta"
+						value="@load(vmI.cuenta.numero)" />
 				</row>
 				<row>
 					<label value="Saldo" />
-					<n:label id="miSaldo"
+					<label id="miSaldo"
 						value="@load(vmI.cuenta.saldo)" />
 				</row>
 				<row>
@@ -37,10 +37,17 @@
 			</rows>
 		</grid>
 		<button label="Aceptar" id="btnAceptar" onClick="@command('transferir')" />
+		<vlayout>
 		<separator />
 		<textbox id="trfExitosa" value="Transferencia exitosa"
 			readonly="true" style="font-size: 35px;"
 			visible="@load(vmI.transFerenciaExitosa)" />
 		<separator />
+		<separator />
+		<textbox id="trfSaldoIns" value="Saldo insuficiente"
+			readonly="true" style="font-size: 35px;"
+			visible="@load(vmI.saldoIn)" />
+		<separator />
+		</vlayout>
 	</window>
 </zk>

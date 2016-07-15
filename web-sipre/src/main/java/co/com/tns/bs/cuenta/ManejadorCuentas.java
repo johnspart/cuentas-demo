@@ -2,9 +2,9 @@ package co.com.tns.bs.cuenta;
 
 public class ManejadorCuentas {
 
-	public boolean saldoSuficiente(Cliente cliente, int monto) {
+	public boolean saldoSuficiente(Cliente cliente, double monto) {
 		boolean sedebito = false;
-		if (cliente.getCuenta().getSaldo() > monto) {			
+		if (cliente.getCuenta().getSaldo() >= monto) {			
 			sedebito = true;
 		}
 		return sedebito;
@@ -15,10 +15,12 @@ public class ManejadorCuentas {
 		return cliente.getCuenta().getSaldo();
 	}
 
-	public void transferir(Cliente clienteOrigen, Cliente clienteDestino, int monto) {
+	public void transferir(Cliente clienteOrigen, Cliente clienteDestino, double monto) throws Exception {
 		if(saldoSuficiente(clienteOrigen,monto)){
 			clienteOrigen.getCuenta().debitar(monto);
 			clienteDestino.getCuenta().adicionar(monto);	
+		}else{
+			throw new Exception("Saldo Insuficiente");
 		}
 		
 		

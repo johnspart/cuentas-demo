@@ -7,7 +7,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(strict = true,
-					features = {"src/test/cucumber/"},
+					features = {"src/test/java/"},
 					glue={"co.com.tns.feature"})
 public class CucumberConfig {
 	

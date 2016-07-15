@@ -4,6 +4,15 @@ public class Cuenta {
 	private double saldo;
 	private double monto;
 	private String fecha;
+	private String numero;
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
 
 	public double getSaldo() {
 		return saldo;
@@ -29,12 +38,12 @@ public class Cuenta {
 		this.fecha = fecha;
 	}
 
-	public void debitar(int monto2) {
+	public void debitar(double monto2) {
 		this.saldo= saldo -monto2;
 		
 	}
 
-	public void adicionar(int monto2) {
+	public void adicionar(double monto2) {
 		this.saldo= saldo +monto2;
 		
 	}
