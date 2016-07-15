@@ -1,7 +1,9 @@
 package co.com.tns.vm;
 
+import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.bind.annotation.NotifyChange;
 
 import co.com.tns.bs.cuenta.Cliente;
 import co.com.tns.bs.cuenta.Cuenta;
@@ -18,6 +20,13 @@ public class IndexVM {
 		this.cliente = new Cliente();
 		this.cuenta = new Cuenta();
 		this.transFerenciaExitosa = false;
+	}
+
+	@NotifyChange("*")
+	@Command("transferir")
+	public void transferir() {
+		this.cuenta.setSaldo(this.cuenta.getSaldo() - this.getValorTransferir());
+		this.transFerenciaExitosa = true;
 	}
 
 	public Double getValorTransferir() {

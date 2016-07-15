@@ -59,7 +59,7 @@ public class TestTransferir {
 
 	@When("^ingreso el saldo a transferir de \"([^\"]*)\"$")
 	public void ingreso_el_saldo_a_transferir_de(String monto) throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
+		// Write code here that turns the phrase above into concrete actions		
 		List<WebElement> inputs=webDriver.findElements(By.tagName("input"));
 		inputs.get(0).sendKeys(String.valueOf(monto));
 		

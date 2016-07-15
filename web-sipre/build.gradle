@@ -50,7 +50,3 @@ test {
     systemProperties 'property': 'value'
 }
 
-task atdd{
-    testLogging.showStandardStreams = true
-    systemProperties System.getProperties()
-}
