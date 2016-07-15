@@ -37,8 +37,8 @@
 		</grid>
 		<button label="Aceptar" id="btnAceptar" />
 		<separator />
-		<label value="Transferencia exitosa" style="font-size: 35px;"
-			visible="@load(vmI.transFerenciaExitosa)" />
+		<label id="trfExitosa" value="Transferencia exitosa"
+			style="font-size: 35px;" visible="@load(vmI.transFerenciaExitosa)" />
 		<separator />
 	</window>
 </zk>
