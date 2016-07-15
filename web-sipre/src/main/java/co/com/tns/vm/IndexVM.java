@@ -4,6 +4,7 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zk.ui.Executions;
 
 import co.com.tns.bs.cuenta.Cliente;
 import co.com.tns.bs.cuenta.Cuenta;
@@ -16,9 +17,10 @@ public class IndexVM {
 	private boolean transFerenciaExitosa;
 
 	@Init
-	public void init(@ExecutionArgParam("cliente") Cliente cliente) {
-		this.cliente = new Cliente();
-		this.cuenta = new Cuenta();
+	public void init() {
+		Cliente cliente = (Cliente) Executions.getCurrent().getSession().getAttribute("cliente");
+		this.cliente = cliente;
+		this.cuenta = cliente.getCuenta();
 		this.transFerenciaExitosa = false;
 	}
 

@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import co.com.tns.bs.cuenta.Cliente;
 import co.com.tns.bs.cuenta.Cuenta;
@@ -27,9 +29,10 @@ public class TestTransferir {
 	@Given("^mi saldo actual es \"([^\"]*)\"$")
 	public void mi_saldo_actual_es(String saldo) throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
-		System.setProperty("webdriver.chrome.driver",
-				"./src/test/resources/drivers/chromedriver.exe");
-		webDriver = new ChromeDriver();
+		//System.setProperty("webdriver.chrome.driver",
+				//"./src/test/resources/drivers/chromedriver.exe");
+				
+		webDriver = new FirefoxDriver();
 		
 		
 		cliente = new Cliente();

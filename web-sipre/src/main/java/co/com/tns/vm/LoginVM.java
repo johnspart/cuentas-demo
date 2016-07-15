@@ -17,7 +17,7 @@ public class LoginVM {
 		cuenta.setSaldo(1000);
 		cuenta.setFecha("2015-12-5");
 		cliente.setCuenta(cuenta);
-		Executions.getCurrent().setAttribute("cliente", cliente);
+		Executions.getCurrent().getSession().setAttribute("cliente", cliente);
 		Executions.sendRedirect("/index.zul");
 	}
 }
