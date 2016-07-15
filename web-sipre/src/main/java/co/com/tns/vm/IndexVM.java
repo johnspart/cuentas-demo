@@ -1,5 +1,8 @@
 package co.com.tns.vm;
 
+import org.zkoss.bind.annotation.BindingParam;
+import org.zkoss.bind.annotation.ContextParam;
+import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 
 import co.com.tns.bs.cuenta.Cliente;
@@ -10,11 +13,13 @@ public class IndexVM {
 	private Cuenta cuenta;
 	private String cuentaTransferir;
 	private Double valorTransferir;
+	private boolean transFerenciaExitosa;
 
 	@Init
-	public void init() {
+	public void init(@ExecutionArgParam("cliente") Cliente cliente) {
 		this.cliente = new Cliente();
 		this.cuenta = new Cuenta();
+		this.transFerenciaExitosa = false;
 	}
 
 	public Double getValorTransferir() {
@@ -47,6 +52,14 @@ public class IndexVM {
 
 	public void setCuentaTransferir(String cuentaTransferir) {
 		this.cuentaTransferir = cuentaTransferir;
+	}
+
+	public boolean isTransFerenciaExitosa() {
+		return transFerenciaExitosa;
+	}
+
+	public void setTransFerenciaExitosa(boolean transFerenciaExitosa) {
+		this.transFerenciaExitosa = transFerenciaExitosa;
 	}
 
 }
