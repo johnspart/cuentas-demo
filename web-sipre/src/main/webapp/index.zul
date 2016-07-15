@@ -5,18 +5,36 @@
 
 <?link rel="stylesheet" href="/less/index.css.dsp" ?>
 <zk xmlns:n="native">
-	<window>
+	<window apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vmI') @init('co.com.tns.vm.IndexVM')" border="none"
+		mode="highlighted" width="400px" height="240px" position="center">
 		<grid>
 			<columns>
-				<column/>
-				<column/>
+				<column width="100px" />
+				<column />
 			</columns>
 			<rows>
 				<row>
-					<label value="Cuenta #"/>
-					<label value="@load()"/>
+					<label value="Cuenta #" />
+					<label id="miCuenta"
+						value="@load(vmI.cliente.cuenta)" />
+				</row>
+				<row>
+					<label value="Saldo" />
+					<label id="miSaldo" value="@load(vmI.cuenta.saldo)" />
+				</row>
+				<row>
+					<label value="Valor a transferir" />
+					<doublebox id="valorTransferir"
+						value="@bind(vmI.valorTransferir)" />
+				</row>
+				<row>
+					<label value="Cuenta transferir" />
+					<textbox id="cuentaTransferir"
+						value="@bind(vmI.cuentaTransferir)" />
 				</row>
 			</rows>
-		</grid>	
+		</grid>
+		<button label="Aceptar" id="btnAceptar" />
 	</window>
 </zk>
