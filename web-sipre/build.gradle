@@ -54,7 +54,8 @@ sourceSets {
     atdd
 }
 
-task atdd(type:Test){
-    testClassesDir=sourceSets.atdd.output.classesDir
-    classpath=sourceSets.atdd.runtimeClasspath
+
+task atdd(type: Test) {
+    testClassesDir = sourceSets.atdd.output.classesDir
+    classpath = sourceSets.atdd.runtimeClasspath
 }

@@ -16,12 +16,13 @@
 			<rows>
 				<row>
 					<label value="Cuenta #" />
-					<label id="miCuenta"
+					<n:label id="miCuenta"
 						value="@load(vmI.cliente.cuenta)" />
 				</row>
 				<row>
 					<label value="Saldo" />
-					<label id="miSaldo" value="@load(vmI.cuenta.saldo)" />
+					<n:label id="miSaldo"
+						value="@load(vmI.cuenta.saldo)" />
 				</row>
 				<row>
 					<label value="Valor a transferir" />
@@ -35,10 +36,11 @@
 				</row>
 			</rows>
 		</grid>
-		<button label="Aceptar" id="btnAceptar" />
+		<button label="Aceptar" id="btnAceptar" onClick="@command('transferir')" />
 		<separator />
-		<label id="trfExitosa" value="Transferencia exitosa"
-			style="font-size: 35px;" visible="@load(vmI.transFerenciaExitosa)" />
+		<textbox id="trfExitosa" value="Transferencia exitosa"
+			readonly="true" style="font-size: 35px;"
+			visible="@load(vmI.transFerenciaExitosa)" />
 		<separator />
 	</window>
 </zk>
