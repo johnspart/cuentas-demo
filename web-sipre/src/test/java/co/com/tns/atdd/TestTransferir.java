@@ -30,13 +30,11 @@ public class TestTransferir {
 		System.setProperty("webdriver.chrome.driver",
 				"./src/test/resources/drivers/chromedriver.exe");
 		webDriver = new ChromeDriver();
-		webDriver.get("http://192.168.1.58:8080/web-sipre/index.zul");
-		WebElement input = webDriver.findElement(By
-				.xpath(".//*[contains(@id,'miSaldo')]"));
+		
 		
 		cliente = new Cliente();
-		cliente.setUsuario("admin");
-		cliente.setPassword("123");
+		cliente.setUsuario("jimmy");
+		cliente.setPassword("jimmy");
 		Cuenta cuenta = new Cuenta();
 		cuenta.setSaldo(Integer.valueOf(saldo));
 		cliente.setCuenta(cuenta);
@@ -45,21 +43,25 @@ public class TestTransferir {
 	@Given("^estoy en la pantalla de cuentas$")
 	public void estoy_en_la_pantalla_de_cuentas() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
-		webDriver.get("http://192.168.1.58:8080/web-sipre/login.zul");
-		WebElement usuario = webDriver.findElement(By
-				.xpath(".//*[contains(@id,'username')]"));
-		usuario.sendKeys(cliente.getUsuario());
-		WebElement password = webDriver.findElement(By
-				.xpath(".//*[contains(@id,'password')]"));
-		password.sendKeys(cliente.getPassword());
-		WebElement button = webDriver.findElement(By
-				.xpath(".//*[contains(@id,'button')]"));
+		webDriver.get("http://localhost:8080/web-sipre/login.zul");
+		List<WebElement> inputs=webDriver.findElements(By.tagName("input"));
+		
+		//WebElement usuario = webDriver.findElement(By
+			//	.xpath(".//*[contains(@id,'username')]"));
+		inputs.get(0).sendKeys(cliente.getUsuario());
+		//WebElement password = webDriver.findElement(By
+		//		.xpath(".//*[contains(@id,'password')]"));
+		inputs.get(1).sendKeys(cliente.getPassword());
+		
+		WebElement button = webDriver.findElement(By.tagName("button"));
 		button.click();
+		
 	}
 
 	@When("^ingreso el saldo a transferir de \"([^\"]*)\"$")
 	public void ingreso_el_saldo_a_transferir_de(String monto) throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
+		Thread.sleep(1000);
 		List<WebElement> inputs=webDriver.findElements(By.tagName("input"));
 		inputs.get(0).sendKeys(String.valueOf(monto));
 		
@@ -68,16 +70,15 @@ public class TestTransferir {
 	@When("^ingreso la cuenta destino \"([^\"]*)\"$")
 	public void ingreso_la_cuenta_destino(String cuenta) throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
-		WebElement cuentaDestino = webDriver.findElement(By
-				.xpath(".//*[contains(@id,'cuentaTransferir')]"));
-		cuentaDestino.sendKeys(String.valueOf(cuenta));
+		List<WebElement> inputs=webDriver.findElements(By.tagName("input"));
+		inputs.get(1).sendKeys(String.valueOf(cuenta));
+		
 	}
 
 	@When("^seleccion la opcion Transferir$")
 	public void seleccion_la_opcion_Transferir() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
-		WebElement button = webDriver.findElement(By
-				.xpath(".//*[contains(@id,'btnAceptar')]"));
+		WebElement button = webDriver.findElement(By.tagName("button"));
 		button.click();
 	}
 
