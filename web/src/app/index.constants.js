@@ -6,6 +6,6 @@
     .module('web')
     .constant('malarkey', malarkey)
     .constant('moment', moment)
-    .constant('urlSrv', 'localhost:8080/web-sipre/rest/');
+    .constant('urlSrv', 'http://localhost:8080/web-sipre/rest/');
 
 })();

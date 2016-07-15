@@ -5,9 +5,24 @@
     .module('web')
     .factory('MainService', MainService);
 
-  function MainService($http, urlSrv) {
-    var vm = this;
+  function MainService($http, urlSrv, toastr) {
 
-    $http.post(urlSrv + 'transferir');
+    function transferir(transferencia) {
+      $http.post(urlSrv + 'transferir', transferencia, {
+          headers: {
+            "content-type": "application/json"
+          }
+        }).success(function(data) {
+          toastr.info("Transferencia exitosa");
+        })
+        .error(function() {
+
+        });
+    }
+
+    return {
+      transferir: transferir
+    };
+
   }
 })();

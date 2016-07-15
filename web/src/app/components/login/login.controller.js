@@ -6,7 +6,7 @@
     .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function LoginController($scope, toastr) {
+  function LoginController($scope, toastr, LoginService) {
     var vm = this;
 
     vm.credentials = {
@@ -16,7 +16,7 @@
     vm.error = false;
     vm.login = function(form) {
       if (form.$valid)
-        toastr.info("Usuario y password correctos");
+        LoginService.login(vm.credentials);
       else {
         form.$setDirty(true);
         toastr.info("Usuario y/o password erroneos");

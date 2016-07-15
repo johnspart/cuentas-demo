@@ -5,13 +5,13 @@
     .module('web')
     .factory('LoginService', LoginService);
 
-  function LoginService($rootScope, $http, $log, $httpParamSerializer, $location, urlSrv, toastr) {
+  function LoginService($rootScope, $http, $log, $location, urlSrv, toastr) {
 
     function login(credentials) {
 
-      $http.post(urlSrv + 'login', $httpParamSerializer(credentials), {
+      $http.post(urlSrv + 'login', credentials, {
         headers: {
-          "content-type": "application/x-www-form-urlencoded"
+          "content-type": "application/json"
         }
       }).success(function() {
         $rootScope.authenticate(function() {
@@ -27,7 +27,7 @@
             $rootScope.authenticated = false;
           }
         });
-      }).error(function() {
+      }).error(function(data) {
         $location.path("/login");
         toastr.error("Error");
         $rootScope.authenticated = false;
