@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<div class="ng-scope container">
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4">
+      <div class="text-center">
+        <h3>Transferencias</h3>
+        <form name="transferirForm" ng-submit="main.transferir(transferirForm)">
+          <div class="form-group">
+            <label for="lblNumCuenta">Cuenta #</label>
+            <label id="lblNumCuenta">{{main.cliente.cuenta}}</label>
+          </div>
+          <div class="form-group">
+            <label for="lblSaldoCuenta">Saldo $</label>
+            <label id="lblSaldoCuenta">{{main.cliente.saldo}}</label>
+          </div>
+          <div class="form-group">
+            <label for="inpValorTransferir">Valor a transferir $</label>
+            <input id="inpValorTransferir" ng-model="main.cliente.valorTrasnferir" />
+          </div>
+          <div class="form-group">
+            <label for="inpCntTransferir">Cuenta transferir #</label>
+            <input id="inpCntTransferir" ng-model="main.cliente.cuentaTransferir" />
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">
+            Transferir</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
