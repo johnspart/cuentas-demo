@@ -3,7 +3,6 @@ apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'jacoco'
-apply plugin: 'jetty'
 
 
 sourceCompatibility = '1.7'
@@ -55,11 +54,8 @@ sourceSets {
     atdd
 }
 
-task jettyDaemon(type: org.gradle.api.plugins.jetty.JettyRun) {
-    daemon = true
-}
 
-task atdd(type: Test, dependsOn: jettyDaemon) {
+task atdd(type: Test) {
     testClassesDir = sourceSets.atdd.output.classesDir
     classpath = sourceSets.atdd.runtimeClasspath
 }
