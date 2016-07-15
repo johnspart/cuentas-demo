@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="2.0">
 	<wb-module deploy-name="web-sipre">
 		<property name="context-root" value="web-sipre"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
 		<wb-resource deploy-path="/" source-path="src/main/webapp"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
 		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Users/jimmy.muchachasoy/.gradle/caches/modules-2/files-2.1/org.zkoss.zk/zkbind/7.0.3/66080ce888a6ea75d8d550062fcb312abde7d86d/zkbind-7.0.3.jar">
 			<dependency-type>uses</dependency-type>
 		</dependent-module>
