@@ -37,24 +37,26 @@ public class ManejadorCuentaTest {
 
 	@Test
 	public void transferirSaldoTest() {
-
+		double saldoVerificar = 8000.0;
+		double saldoVerificarNuevoCliente = 4000.0;
 		manejadorCuentas.transferir(clienteOrigen, clienteDestino, 2000);
 		//
 		double saldo = manejadorCuentas.consultarSaldo(clienteOrigen);
 		double saldoNuevoCliente = manejadorCuentas.consultarSaldo(clienteDestino);
 		// Assert
-		Assert.assertEquals(8000.0, saldo);
-		Assert.assertEquals(4000.0, saldoNuevoCliente);
+		Assert.assertTrue("El saldo no coincide", saldoVerificar == saldo);
+		Assert.assertTrue("El saldo del nuevo cliente nocoincide", saldoVerificarNuevoCliente == saldoNuevoCliente);
 	}
 
 	@Test
 	public void saldoInsuficienteTest() {
+		double saldoVerificar = 2000;
 		// Arrange
 		clienteOrigen.getCuenta().setSaldo(2000);
 		// Act
 		manejadorCuentas.transferir(clienteOrigen, clienteDestino, 10000);
 		double saldo = manejadorCuentas.consultarSaldo(clienteOrigen);
 		// Assert
-		Assert.assertEquals(2000.0, saldo);
+		Assert.assertTrue("El saldo no conincide", saldoVerificar == saldo);
 	}
 }

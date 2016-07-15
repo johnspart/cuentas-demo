@@ -7,7 +7,7 @@
 <zk xmlns:n="native">
 	<window apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vmI') @init('co.com.tns.vm.IndexVM')" border="none"
-		mode="highlighted" width="400px" height="240px" position="center">
+		mode="highlighted" width="400px" height="310px" position="center">
 		<grid>
 			<columns>
 				<column width="100px" />
@@ -36,5 +36,9 @@
 			</rows>
 		</grid>
 		<button label="Aceptar" id="btnAceptar" />
+		<separator />
+		<label value="Transferencia exitosa" style="font-size: 35px;"
+			visible="false" />
+		<separator />
 	</window>
 </zk>
