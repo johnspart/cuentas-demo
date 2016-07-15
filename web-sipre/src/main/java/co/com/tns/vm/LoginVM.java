@@ -10,7 +10,7 @@ import co.com.tns.bs.cuenta.Cuenta;
 public class LoginVM {
 	@Command("login")
 	public void login(@BindingParam("user") String user, @BindingParam("pass") String pass) {
-		if (user != pass)
+		if (!user.equals(pass))
 			return;
 		Cliente cliente = new Cliente();
 		Cuenta cuenta = new Cuenta();

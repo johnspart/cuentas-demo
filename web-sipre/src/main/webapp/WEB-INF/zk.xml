@@ -33,4 +33,8 @@
 		<value>atlantic</value>
 	</library-property>
 
+	<system-config>
+		<id-generator-class>co.com.zk.SequenceIdGenerator</id-generator-class>
+	</system-config>
+
 </zk>
