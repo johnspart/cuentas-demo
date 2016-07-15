@@ -1,7 +1,5 @@
 package co.com.tns.vm;
 
-import org.zkoss.bind.annotation.BindingParam;
-import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 
