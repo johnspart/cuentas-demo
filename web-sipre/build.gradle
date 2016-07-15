@@ -50,12 +50,3 @@ test {
     systemProperties 'property': 'value'
 }
 
-sourceSets {
-    atdd
-}
-
-
-task atdd(type: Test) {
-    testClassesDir = sourceSets.atdd.output.classesDir
-    classpath = sourceSets.atdd.runtimeClasspath
-}
