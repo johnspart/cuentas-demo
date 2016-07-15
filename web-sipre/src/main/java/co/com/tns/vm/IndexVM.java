@@ -1,5 +1,7 @@
 package co.com.tns.vm;
 
+import org.zkoss.bind.annotation.Init;
+
 import co.com.tns.bs.cuenta.Cliente;
 import co.com.tns.bs.cuenta.Cuenta;
 
@@ -8,6 +10,12 @@ public class IndexVM {
 	private Cuenta cuenta;
 	private String cuentaTransferir;
 	private Double valorTransferir;
+
+	@Init
+	public void init() {
+		this.cliente = new Cliente();
+		this.cuenta = new Cuenta();
+	}
 
 	public Double getValorTransferir() {
 		return valorTransferir;
