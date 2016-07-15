@@ -4,6 +4,24 @@ public class Cliente {
 	private String nombre;
 	private Cuenta cuenta;
 	private String direccion;
+	private String usuario;
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	private String password;
 
 	public String getNombre() {
 		return nombre;
